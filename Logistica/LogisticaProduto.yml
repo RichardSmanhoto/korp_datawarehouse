@@ -1,0 +1,92 @@
+cubes:
+  - name: LogisticaProduto
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.LogisticaProduto`"
+    title: Logística Produto
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigo
+        sql: Codigo
+        type: string
+        title: Código
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição
+
+      - name: codigoCategoria
+        sql: CodigoCategoria
+        type: string
+        title: Cód. Categoria
+
+      - name: codigoFamilia
+        sql: CodigoFamilia
+        type: string
+        title: Cód. Família
+
+      - name: codigoGrupo
+        sql: CodigoGrupo
+        type: string
+        title: Cód. Grupo
+
+      - name: codigoSubGrupo
+        sql: CodigoSubGrupo
+        type: string
+        title: Cód. Subgrupo
+
+      - name: codigoMarca
+        sql: CodigoMarca
+        type: string
+        title: Cód. Marca
+
+      - name: codigoTipo
+        sql: CodigoTipo
+        type: string
+        title: Cód. Tipo
+
+      - name: descricaoCategoria
+        sql: DescricaoCategoria
+        type: string
+        title: Categoria
+
+      - name: descricaoFamilia
+        sql: DescricaoFamilia
+        type: string
+        title: Família
+
+      - name: descricaoGrupo
+        sql: DescricaoGrupo
+        type: string
+        title: Grupo
+
+      - name: descricaoSubGrupo
+        sql: DescricaoSubGrupo
+        type: string
+        title: Subgrupo
+
+      - name: descricaoMarca
+        sql: DescricaoMarca
+        type: string
+        title: Marca
+
+      - name: descricaoTipo
+        sql: DescricaoTipo
+        type: string
+        title: Tipo
+
+      - name: unidadeMedida
+        sql: UnidadeMedida
+        type: string
+        title: Unidade de Medida

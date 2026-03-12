@@ -1,0 +1,65 @@
+cubes:
+  - name: FatoContabilSaldoDre
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoContabilSaldoDre`"
+    title: Contábil Saldo DRE
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: ContabilModeloDre
+        relationship: belongsTo
+        sql: "{CUBE}.IdModeloDre = {ContabilModeloDre}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: DataCriacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataCriacao = {DataCriacao}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorRealizadoSum
+        sql: ValorRealizado
+        type: sum
+        title: Soma do Valor Realizado
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idModeloDre
+        sql: IdModeloDre
+        type: number
+        title: Modelo DRE
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idDataCriacao
+        sql: IdDataCriacao
+        type: number
+        title: Data de Criação
+
+      - name: valorRealizado
+        sql: ValorRealizado
+        type: number
+        title: Valor Realizado

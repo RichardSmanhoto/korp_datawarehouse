@@ -1,0 +1,259 @@
+cubes:
+  - name: FatoVendaPedidoFaturar
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoVendaPedidoFaturar`"
+    title: Venda Pedido - Faturar
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: DataEntrega
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEntrega = {DataEntrega}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: LogisticaProdutoMarca
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoMarca = {LogisticaProdutoMarca}.Id"
+
+      - name: VendaClienteClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteClasse = {VendaClienteClasse}.Id"
+
+      - name: VendaSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteSegmento = {VendaSegmento}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: VendaPedido
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaPedido = {VendaPedido}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: LogisticaProdutoCategoria
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoCategoria = {LogisticaProdutoCategoria}.Id"
+
+      - name: DataCriacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataCriacao = {DataCriacao}.Id"
+
+      - name: DataAtualizacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataAtualizacao = {DataAtualizacao}.Id"
+
+      - name: VendaPedidoFaturar
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturarPedido = {VendaPedidoFaturar}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeTotalSum
+        sql: QuantidadeTotal
+        type: sum
+        title: Soma da Quantidade Total
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: descontoSum
+        sql: Desconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: quantidadeFaturadaSum
+        sql: QuantidadeFaturada
+        type: sum
+        title: Soma da Quantidade Faturada
+
+      - name: quantidadeFaturarSum
+        sql: QuantidadeFaturar
+        type: sum
+        title: Soma da Quantidade a Faturar
+
+      - name: valorFaturarSum
+        sql: ValorFaturar
+        type: sum
+        title: Soma do Valor a Faturar
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+
+      - name: idDataEntrega
+        sql: IdDataEntrega
+        type: number
+        title: Data de Entrega
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idProdutoMarca
+        sql: IdProdutoMarca
+        type: number
+        title: Marca do Produto
+
+      - name: idClienteClasse
+        sql: IdClienteClasse
+        type: number
+        title: Classe do Cliente
+
+      - name: idClienteSegmento
+        sql: IdClienteSegmento
+        type: number
+        title: Segmento do Cliente
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idVendaPedido
+        sql: IdVendaPedido
+        type: number
+        title: Pedido
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idProdutoCategoria
+        sql: IdProdutoCategoria
+        type: number
+        title: Categoria do Produto
+
+      - name: idDataCriacao
+        sql: IdDataCriacao
+        type: number
+        title: Data de Criação
+
+      - name: idDataAtualizacao
+        sql: IdDataAtualizacao
+        type: number
+        title: Data de Atualização
+
+      - name: idFaturarPedido
+        sql: IdFaturarPedido
+        type: number
+        title: Pedido a Faturar
+
+      - name: quantidadeTotal
+        sql: QuantidadeTotal
+        type: number
+        title: Quantidade Total
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: desconto
+        sql: Desconto
+        type: number
+        title: Desconto
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: quantidadeFaturada
+        sql: QuantidadeFaturada
+        type: number
+        title: Quantidade Faturada
+
+      - name: quantidadeFaturar
+        sql: QuantidadeFaturar
+        type: number
+        title: Quantidade a Faturar
+
+      - name: valorFaturar
+        sql: ValorFaturar
+        type: number
+        title: Valor a Faturar

@@ -1,0 +1,27 @@
+cubes:
+  - name: FiscalNCM
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FiscalNCM`"
+    title: Fiscal NCM
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: classificacao
+        sql: Classificacao
+        type: string
+        title: Classificação
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição

@@ -1,0 +1,422 @@
+cubes:
+  - name: FatoVendaProduto
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoVendaProduto`"
+    title: Venda Produto
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: CompraTransportadora
+        relationship: belongsTo
+        sql: "{CUBE}.IdTransportadora = {CompraTransportadora}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: DataEntrega
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEntrega = {DataEntrega}.Id"
+
+      - name: FaturamentoTipoFrete
+        relationship: belongsTo
+        sql: "{CUBE}.IdTipoFrete = {FaturamentoTipoFrete}.Id"
+
+      - name: PreCadastrosMunicipio
+        relationship: belongsTo
+        sql: "{CUBE}.IdMunicipio = {PreCadastrosMunicipio}.Id"
+
+      - name: PreCadastrosPais
+        relationship: belongsTo
+        sql: "{CUBE}.IdPais = {PreCadastrosPais}.Id"
+
+      - name: PreCadastrosEstado
+        relationship: belongsTo
+        sql: "{CUBE}.IdEstado = {PreCadastrosEstado}.Id"
+
+      - name: VendaStatusPedido
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaStatusPedido = {VendaStatusPedido}.Id"
+
+      - name: VendaPedido
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaPedido = {VendaPedido}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: FiscalCFOP
+        relationship: belongsTo
+        sql: "{CUBE}.IdCfop = {FiscalCFOP}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdRepresentante = {CompraFornecedor}.Id"
+
+      - name: FiscalNCM
+        relationship: belongsTo
+        sql: "{CUBE}.IdNcm = {FiscalNCM}.Id"
+
+      - name: VendaEquipe
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaEquipe = {VendaEquipe}.Id"
+
+      - name: VendaClienteClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteClasse = {VendaClienteClasse}.Id"
+
+      - name: VendaSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteSegmento = {VendaSegmento}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: LogisticaProdutoMarca
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoMarca = {LogisticaProdutoMarca}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: LogisticaProdutoCategoria
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoCategoria = {LogisticaProdutoCategoria}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: quantidadeSum
+        sql: Quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: valorFreteSum
+        sql: ValorFrete
+        type: sum
+        title: Soma do Frete
+
+      - name: valorAcrescimoSum
+        sql: ValorAcrescimo
+        type: sum
+        title: Soma do Acréscimo
+
+      - name: valorDescontoSum
+        sql: ValorDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: valorIpiSum
+        sql: ValorIpi
+        type: sum
+        title: Soma do IPI
+
+      - name: valorIcmsSum
+        sql: ValorIcms
+        type: sum
+        title: Soma do ICMS
+
+      - name: valorPisSum
+        sql: ValorPis
+        type: sum
+        title: Soma do PIS
+
+      - name: valorCofinsSum
+        sql: ValorCofins
+        type: sum
+        title: Soma do COFINS
+
+      - name: valorIcmsstSum
+        sql: ValorIcmsst
+        type: sum
+        title: Soma do ICMS-ST
+
+      - name: valorIssSum
+        sql: ValorIss
+        type: sum
+        title: Soma do ISS
+
+      - name: valorDesoneracaoSum
+        sql: ValorDesoneracao
+        type: sum
+        title: Soma da Desoneração
+
+      - name: valorComissaoSum
+        sql: ValorComissao
+        type: sum
+        title: Soma da Comissão
+
+      - name: valorCmvSum
+        sql: ValorCmv
+        type: sum
+        title: Soma do CMV
+
+      - name: valorLucroSum
+        sql: ValorLucro
+        type: sum
+        title: Soma do Lucro
+
+      - name: valorMargemContribuicaoSum
+        sql: ValorMargemContribuicao
+        type: sum
+        title: Soma da Margem de Contribuição
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idTransportadora
+        sql: IdTransportadora
+        type: number
+        title: Transportadora
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idDataEntrega
+        sql: IdDataEntrega
+        type: number
+        title: Data de Entrega
+
+      - name: idTipoFrete
+        sql: IdTipoFrete
+        type: number
+        title: Tipo de Frete
+
+      - name: idMunicipio
+        sql: IdMunicipio
+        type: number
+        title: Município
+
+      - name: idPais
+        sql: IdPais
+        type: number
+        title: País
+
+      - name: idEstado
+        sql: IdEstado
+        type: number
+        title: Estado
+
+      - name: idVendaStatusPedido
+        sql: IdVendaStatusPedido
+        type: string
+        title: Status do Pedido
+
+      - name: idVendaPedido
+        sql: IdVendaPedido
+        type: number
+        title: Pedido
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idCfop
+        sql: IdCfop
+        type: number
+        title: CFOP
+
+      - name: idRepresentante
+        sql: IdRepresentante
+        type: number
+        title: Representante
+
+      - name: idNcm
+        sql: IdNcm
+        type: number
+        title: NCM
+
+      - name: idVendaEquipe
+        sql: IdVendaEquipe
+        type: string
+        title: Equipe
+
+      - name: idClienteClasse
+        sql: IdClienteClasse
+        type: number
+        title: Classe do Cliente
+
+      - name: idClienteSegmento
+        sql: IdClienteSegmento
+        type: number
+        title: Segmento do Cliente
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idProdutoMarca
+        sql: IdProdutoMarca
+        type: number
+        title: Marca do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idProdutoCategoria
+        sql: IdProdutoCategoria
+        type: number
+        title: Categoria do Produto
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: quantidade
+        sql: Quantidade
+        type: number
+        title: Quantidade
+
+      - name: valorFrete
+        sql: ValorFrete
+        type: number
+        title: Frete
+
+      - name: valorAcrescimo
+        sql: ValorAcrescimo
+        type: number
+        title: Acréscimo
+
+      - name: valorDesconto
+        sql: ValorDesconto
+        type: number
+        title: Desconto
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: valorIpi
+        sql: ValorIpi
+        type: number
+        title: IPI
+
+      - name: valorIcms
+        sql: ValorIcms
+        type: number
+        title: ICMS
+
+      - name: valorPis
+        sql: ValorPis
+        type: number
+        title: PIS
+
+      - name: valorCofins
+        sql: ValorCofins
+        type: number
+        title: COFINS
+
+      - name: valorIcmsst
+        sql: ValorIcmsst
+        type: number
+        title: ICMS-ST
+
+      - name: valorIss
+        sql: ValorIss
+        type: number
+        title: ISS
+
+      - name: valorDesoneracao
+        sql: ValorDesoneracao
+        type: number
+        title: Desoneração
+
+      - name: valorComissao
+        sql: ValorComissao
+        type: number
+        title: Comissão
+
+      - name: valorCmv
+        sql: ValorCmv
+        type: number
+        title: CMV
+
+      - name: valorLucro
+        sql: ValorLucro
+        type: number
+        title: Lucro
+
+      - name: valorMargemContribuicao
+        sql: ValorMargemContribuicao
+        type: number
+        title: Margem de Contribuição

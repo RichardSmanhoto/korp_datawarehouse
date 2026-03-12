@@ -1,0 +1,74 @@
+cubes:
+  - name: FatoCompraItemNotaRateioCentroCusto
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoCompraItemNotaRateioCentroCusto`"
+    title: Compra Item da Nota - Rateio - Centro de Custo
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: CompraItemNotaFiscalNumero
+        relationship: belongsTo
+        sql: "{CUBE}.IdItemNotaFiscalCompra = {CompraItemNotaFiscalNumero}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: DataCriacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataCriacao = {DataCriacao}.Id"
+
+      - name: DataAtualizacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataAtualizacao = {DataAtualizacao}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeRateioCentroCustoSum
+        sql: QuantidadeRateioCentroCusto
+        type: sum
+        title: Soma da Quantidade
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: idItemNotaFiscalCompra
+        sql: IdItemNotaFiscalCompra
+        type: number
+        title: Item da Nota Fiscal
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idDataCriacao
+        sql: IdDataCriacao
+        type: number
+        title: Data de Criação
+
+      - name: idDataAtualizacao
+        sql: IdDataAtualizacao
+        type: number
+        title: Data de Atualização
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: quantidadeRateioCentroCusto
+        sql: QuantidadeRateioCentroCusto
+        type: number
+        title: Quantidade

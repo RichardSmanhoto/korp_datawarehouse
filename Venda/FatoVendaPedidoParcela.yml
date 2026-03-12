@@ -1,0 +1,91 @@
+cubes:
+  - name: FatoVendaPedidoParcela
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoVendaPedidoParcela`"
+    title: Venda Parcela do Pedido
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: VendaPedidoFaturar
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaPedidoFaturar = {VendaPedidoFaturar}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorSum
+        sql: Valor
+        type: sum
+        title: Soma do Valor
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idVendaPedidoFaturar
+        sql: IdVendaPedidoFaturar
+        type: number
+        title: Pedido a Faturar
+
+      - name: valor
+        sql: Valor
+        type: number
+        title: Valor

@@ -1,0 +1,65 @@
+cubes:
+  - name: FatoLogisticaProdutoSaldoConsignadoSaida
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaProdutoSaldoConsignadoSaida`"
+    title: Logística Produto - Saldo Consignado - Saída
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: CompraItemNotaFiscalNumero
+        relationship: belongsTo
+        sql: "{CUBE}.IdCompraItemNotaEntrada = {CompraItemNotaFiscalNumero}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: Quantidade
+        type: sum
+        title: Soma da Quantidade
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idCompraItemNotaEntrada
+        sql: IdCompraItemNotaEntrada
+        type: number
+        title: Nota Fiscal
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: quantidade
+        sql: Quantidade
+        type: number
+        title: Quantidade

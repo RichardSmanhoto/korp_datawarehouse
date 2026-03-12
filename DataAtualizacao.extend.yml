@@ -1,0 +1,3 @@
+cubes:
+  - name: DataAtualizacao
+    extends: Data

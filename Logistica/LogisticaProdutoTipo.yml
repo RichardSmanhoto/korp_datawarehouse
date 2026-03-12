@@ -1,0 +1,28 @@
+cubes:
+  - name: LogisticaProdutoTipo
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.LogisticaProdutoTipo`"
+    title: Logística Tipo Produto
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigo
+        sql: Codigo
+        type: string
+        title: Código
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descricao

@@ -1,0 +1,92 @@
+cubes:
+  - name: FatoFinanceiroExtratoBancario
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFinanceiroExtratoBancario`"
+    title: Financeiro Extrato Bancário
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FinanceiroExtratoBancario
+        relationship: belongsTo
+        sql: "{CUBE}.IdExtratoBancario = {FinanceiroExtratoBancario}.Id"
+
+      - name: FinanceiroBanco
+        relationship: belongsTo
+        sql: "{CUBE}.IdBanco = {FinanceiroBanco}.Id"
+
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorMovimentacaoSum
+        sql: ValorMovimentacao
+        type: sum
+        title: Soma do Valor Movimentação
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idExtratoBancario
+        sql: IdExtratoBancario
+        type: number
+        title: Extrato Bancário
+
+      - name: idBanco
+        sql: IdBanco
+        type: number
+        title: Banco
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: valorMovimentacao
+        sql: ValorMovimentacao
+        type: number
+        title: Valor Movimentação

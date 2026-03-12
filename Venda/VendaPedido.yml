@@ -1,0 +1,23 @@
+cubes:
+  - name: VendaPedido
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.VendaPedido`"
+    title: Venda Pedido
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: numeroPedido
+        sql: NumeroPedido
+        type: string
+        title: NumeroPedido

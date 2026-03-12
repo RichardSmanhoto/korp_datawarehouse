@@ -1,0 +1,93 @@
+cubes:
+  - name: FatoLogisticaProdutoSaldoTerceiro
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaProdutoSaldoTerceiro`"
+    title: Logística Produto - Saldo Terceiro
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: FaturamentoNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturamentoNotaFiscal = {FaturamentoNotaFiscal}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: saldoSum
+        sql: Saldo
+        type: sum
+        title: Soma do Saldo
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idFaturamentoNotaFiscal
+        sql: IdFaturamentoNotaFiscal
+        type: number
+        title: Nota Fiscal
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: saldo
+        sql: Saldo
+        type: number
+        title: Saldo

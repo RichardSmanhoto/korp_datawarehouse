@@ -1,0 +1,122 @@
+cubes:
+  - name: FatoLogisticaProdutoSaldo
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaProdutoSaldo`"
+    title: Logística Produto - Saldo
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: DataTempo
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataTempo = {DataTempo}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: LogisticaMovimentacaoEfetivada
+        relationship: belongsTo
+        sql: "{CUBE}.IdMovimentacaoEfetivada = {LogisticaMovimentacaoEfetivada}.Id"
+
+      - name: LogisticaMovimentacaoEstornada
+        relationship: belongsTo
+        sql: "{CUBE}.IdMovimentacaoEstornada = {LogisticaMovimentacaoEstornada}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: custoUnitarioSum
+        sql: CustoUnitario
+        type: sum
+        title: Soma do Custo Unitário
+
+      - name: custoMedioSum
+        sql: CustoMedio
+        type: sum
+        title: Soma do Custo Médio
+
+      - name: quantidadeEntradaSum
+        sql: QuantidadeEntrada
+        type: sum
+        title: Soma da Quantidade de Entrada
+
+      - name: quantidadeSaidaSum
+        sql: QuantidadeSaida
+        type: sum
+        title: Soma da Quantidade de Saída
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idDataTempo
+        sql: IdDataTempo
+        type: number
+        title: Data Tempo
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idMovimentacaoEfetivada
+        sql: IdMovimentacaoEfetivada
+        type: string
+        title: Movimentação Efetivada
+
+      - name: idMovimentacaoEstornada
+        sql: IdMovimentacaoEstornada
+        type: string
+        title: Movimentaçao Estornada
+
+      - name: custoUnitario
+        sql: CustoUnitario
+        type: number
+        title: Custo Unitário
+
+      - name: custoMedio
+        sql: CustoMedio
+        type: number
+        title: Custo Médio
+
+      - name: quantidadeEntrada
+        sql: QuantidadeEntrada
+        type: number
+        title: Quantidade de Entrada
+
+      - name: quantidadeSaida
+        sql: QuantidadeSaida
+        type: number
+        title: Quantidade de Saída

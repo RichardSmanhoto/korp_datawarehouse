@@ -1,0 +1,28 @@
+cubes:
+  - name: PreCadastrosEstado
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.PreCadastrosEstado`"
+    title: Geral Estado
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: sigla
+        sql: Sigla
+        type: string
+        title: Sigla
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descricao

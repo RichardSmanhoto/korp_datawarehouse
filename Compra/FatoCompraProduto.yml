@@ -1,0 +1,252 @@
+cubes:
+  - name: FatoCompraProduto
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoCompraProduto`"
+    title: Compra Produto
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoCategoria
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoCategoria = {LogisticaProdutoCategoria}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: LogisticaProdutoMarca
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoMarca = {LogisticaProdutoMarca}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: DataEntrega
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEntrega = {DataEntrega}.Id"
+
+      - name: CompraPedido
+        relationship: belongsTo
+        sql: "{CUBE}.IdCompraPedido = {CompraPedido}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: CompraFornecedorClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedorClasse = {CompraFornecedorClasse}.Id"
+
+      - name: FornecedorSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedorSegmento = {FornecedorSegmento}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: CompraItemPedidoNumero
+        relationship: belongsTo
+        sql: "{CUBE}.IdItemPedidoCompra = {CompraItemPedidoNumero}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: Quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: saldoSum
+        sql: Saldo
+        type: sum
+        title: Soma do Saldo
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: valorTotalDescontoSum
+        sql: ValorTotalDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorIpiSum
+        sql: ValorIpi
+        type: sum
+        title: Soma do IPI
+
+      - name: valorIcmsStSum
+        sql: ValorIcmsSt
+        type: sum
+        title: Soma do ICMS-ST
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: diasMediaPagamentoAvg
+        sql: DiasMediaPagamento
+        type: avg
+        title: Média dos Dias até o Pagamento
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idProdutoCategoria
+        sql: IdProdutoCategoria
+        type: number
+        title: Categoria do Produto
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idDataEntrega
+        sql: IdDataEntrega
+        type: number
+        title: Data de Entrega
+
+      - name: idCompraPedido
+        sql: IdCompraPedido
+        type: number
+        title: Pedido
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idFornecedorClasse
+        sql: IdFornecedorClasse
+        type: number
+        title: Classe do Fornecedor
+
+      - name: idFornecedorSegmento
+        sql: IdFornecedorSegmento
+        type: number
+        title: Segmento do Fornecedor
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idProdutoMarca
+        sql: IdProdutoMarca
+        type: number
+        title: Marca do Produto
+
+      - name: idItemPedidoCompra
+        sql: IdItemPedidoCompra
+        type: number
+        title: Item do Pedido
+
+      - name: quantidade
+        sql: Quantidade
+        type: number
+        title: Quantidade
+
+      - name: saldo
+        sql: Saldo
+        type: number
+        title: Saldo
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: valorTotalDesconto
+        sql: ValorTotalDesconto
+        type: number
+        title: Desconto
+
+      - name: valorIpi
+        sql: ValorIpi
+        type: number
+        title: IPI
+
+      - name: valorIcmsSt
+        sql: ValorIcmsSt
+        type: number
+        title: ICMS-ST
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: diasMediaPagamento
+        sql: DiasMediaPagamento
+        type: number
+        title: Dias até o Pagamento (média)

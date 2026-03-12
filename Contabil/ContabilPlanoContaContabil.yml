@@ -1,0 +1,163 @@
+cubes:
+
+  - name: ContabilPlanoContaContabil
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.ContabilPlanoContaContabil`"
+    title: Contábil Plano Conta Contábil
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigo
+        sql: Codigo
+        type: number
+        title: Código
+
+      - name: codigoPai
+        sql: CodigoPai
+        type: number
+        title: Cód. Pai
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição
+
+      - name: classificacao
+        sql: Classificacao
+        type: string
+        title: Classificação
+
+      - name: tipo
+        sql: Tipo
+        type: string
+        title: Tipo
+
+      - name: sintetico
+        sql: Sintetico
+        type: boolean
+        title: Sintético
+
+      - name: codigoContaReferencial
+        sql: CodigoContaReferencial
+        type: string
+        title: Cód. Conta Referencial
+
+      - name: codigoNatureza
+        sql: CodigoNatureza
+        type: number
+        title: Cód. Natureza
+
+      - name: descricaoNatureza
+        sql: DescricaoNatureza
+        type: string
+        title: Natureza
+
+      - name: naturezaContaResultado
+        sql: NaturezaContaResultado
+        type: boolean
+        title: Natureza Conta Resultado
+
+      - name: codigoNivel1
+        sql: CodigoNivel1
+        type: number
+        title: Cód. Nível 1
+
+      - name: codigoNivel2
+        sql: CodigoNivel2
+        type: number
+        title: Cód. Nível 2
+
+      - name: codigoNivel3
+        sql: CodigoNivel3
+        type: number
+        title: Cód. Nível 3
+
+      - name: codigoNivel4
+        sql: CodigoNivel4
+        type: number
+        title: Cód. Nível 4
+
+      - name: codigoNivel5
+        sql: CodigoNivel5
+        type: number
+        title: Cód. Nível 5
+
+      - name: codigoNivel6
+        sql: CodigoNivel6
+        type: number
+        title: Cód. Nível 6
+
+      - name: codigoNivel7
+        sql: CodigoNivel7
+        type: number
+        title: Cód. Nível 7
+
+      - name: codigoNivel8
+        sql: CodigoNivel8
+        type: number
+        title: Cód. Nível 8
+
+      - name: codigoNivel9
+        sql: CodigoNivel9
+        type: number
+        title: Cód. Nível 9
+
+      - name: descricaoNivel1
+        sql: DescricaoNivel1
+        type: string
+        title: Nível 1
+
+      - name: descricaoNivel2
+        sql: DescricaoNivel2
+        type: string
+        title: Nível 2
+
+      - name: descricaoNivel3
+        sql: DescricaoNivel3
+        type: string
+        title: Nível 3
+
+      - name: descricaoNivel4
+        sql: DescricaoNivel4
+        type: string
+        title: Nível 4
+
+      - name: descricaoNivel5
+        sql: DescricaoNivel5
+        type: string
+        title: Nível 5
+
+      - name: descricaoNivel6
+        sql: DescricaoNivel6
+        type: string
+        title: Nível 6
+
+      - name: descricaoNivel7
+        sql: DescricaoNivel7
+        type: string
+        title: Nível 7
+
+      - name: descricaoNivel8
+        sql: DescricaoNivel8
+        type: string
+        title: Nível 8
+
+      - name: descricaoNivel9
+        sql: DescricaoNivel9
+        type: string
+        title: Nível 9
+
+      - name: ordemPlanoContas
+        sql: OrdemPlanoContas
+        type: number
+        title: Ordem

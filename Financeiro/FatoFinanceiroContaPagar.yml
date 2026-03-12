@@ -1,0 +1,290 @@
+cubes:
+  - name: FatoFinanceiroContaPagar
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFinanceiroContaPagar`"
+    title: Financeiro Contas a Pagar
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: FinanceiroBanco
+        relationship: belongsTo
+        sql: "{CUBE}.IdBanco = {FinanceiroBanco}.Id"
+
+      - name: FinanceiroTipoPagamento
+        relationship: belongsTo
+        sql: "{CUBE}.IdTipoPagamento = {FinanceiroTipoPagamento}.Id"
+
+      - name: FinanceiroTipoDocumento
+        relationship: belongsTo
+        sql: "{CUBE}.IdTipoDocumento = {FinanceiroTipoDocumento}.Id"
+
+      - name: FinanceiroContaPagarDocumento
+        relationship: belongsTo
+        sql: "{CUBE}.IdDocumento = {FinanceiroContaPagarDocumento}.Id"
+
+      - name: FinanceiroContaPagarStatus
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatus = {FinanceiroContaPagarStatus}.Id"
+
+      - name: CompraNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdCompraNotaFiscal = {CompraNotaFiscal}.Id"
+
+      - name: FaturamentoNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturamentoNotaFiscal = {FaturamentoNotaFiscal}.Id"
+
+      - name: FinanceiroExtratoBancario
+        relationship: belongsTo
+        sql: "{CUBE}.IdExtratoBancario = {FinanceiroExtratoBancario}.Id"
+
+      - name: FornecedorSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdSegmentoFornecedor = {FornecedorSegmento}.Id"
+
+      - name: VendaClienteClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdClasseFornecedor = {VendaClienteClasse}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: DataVencimento
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataVencimento = {DataVencimento}.Id"
+
+      - name: DataPagamento
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataPagamento = {DataPagamento}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorBrutoSum
+        sql: ValorBruto
+        type: sum
+        title: Soma do Valor Bruto
+
+      - name: valorDescontoSum
+        sql: ValorDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorJurosSum
+        sql: ValorJuros
+        type: sum
+        title: Soma dos Juros
+
+      - name: valorMultaSum
+        sql: ValorMulta
+        type: sum
+        title: Soma da Multa
+
+      - name: valorRetencaoSum
+        sql: ValorRetencao
+        type: sum
+        title: Soma da Retenção
+
+      - name: valorIofSum
+        sql: ValorIof
+        type: sum
+        title: Soma do IOF
+
+      - name: valorAcrescimoSum
+        sql: ValorAcrescimo
+        type: sum
+        title: Soma do Acréscimo
+
+      - name: valorLiquidoSum
+        sql: ValorLiquido
+        type: sum
+        title: Soma do Valor Líquido
+
+      - name: diasInadimplenciaSum
+        sql: DiasInadimplencia
+        type: sum
+        title: Soma dos Dias em Inadimplência
+
+      - name: diasVencimentoSum
+        sql: DiasVencimento
+        type: sum
+        title: Soma dos Dias até o Vencimento
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idBanco
+        sql: IdBanco
+        type: number
+        title: Banco
+
+      - name: idTipoPagamento
+        sql: IdTipoPagamento
+        type: number
+        title: Tipo de Pagamento
+
+      - name: idTipoDocumento
+        sql: IdTipoDocumento
+        type: number
+        title: Tipo de Documento
+
+      - name: idDocumento
+        sql: IdDocumento
+        type: number
+        title: Documento
+
+      - name: idStatus
+        sql: IdStatus
+        type: number
+        title: Status
+
+      - name: idCompraNotaFiscal
+        sql: IdCompraNotaFiscal
+        type: number
+        title: Nota Fiscal (compra)
+
+      - name: idFaturamentoNotaFiscal
+        sql: IdFaturamentoNotaFiscal
+        type: number
+        title: Nota Fiscal (faturamento)
+
+      - name: idExtratoBancario
+        sql: IdExtratoBancario
+        type: number
+        title: Extrato Bancário
+
+      - name: idSegmentoFornecedor
+        sql: IdSegmentoFornecedor
+        type: number
+        title: Segmento do Fornecedor
+
+      - name: idClasseFornecedor
+        sql: IdClasseFornecedor
+        type: number
+        title: Classe do Fornecedor
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idDataVencimento
+        sql: IdDataVencimento
+        type: number
+        title: Data de Vencimento
+
+      - name: idDataPagamento
+        sql: IdDataPagamento
+        type: number
+        title: Data de Pagamento
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: valorBruto
+        sql: ValorBruto
+        type: number
+        title: Valor Bruto
+
+      - name: valorDesconto
+        sql: ValorDesconto
+        type: number
+        title: Desconto
+
+      - name: valorJuros
+        sql: ValorJuros
+        type: number
+        title: Juros
+
+      - name: valorMulta
+        sql: ValorMulta
+        type: number
+        title: Multa
+
+      - name: valorRetencao
+        sql: ValorRetencao
+        type: number
+        title: Retenção
+
+      - name: valorIof
+        sql: ValorIof
+        type: number
+        title: IOF
+
+      - name: valorAcrescimo
+        sql: ValorAcrescimo
+        type: number
+        title: Acréscimo
+
+      - name: valorLiquido
+        sql: ValorLiquido
+        type: number
+        title: Valor Líquido
+
+      - name: diasInadimplencia
+        sql: DiasInadimplencia
+        type: number
+        title: Dias em Inadimplência
+
+      - name: diasVencimento
+        sql: DiasVencimento
+        type: number
+        title: Dias até o Vencimento

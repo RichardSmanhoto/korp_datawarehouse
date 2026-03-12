@@ -1,0 +1,33 @@
+cubes:
+  - name: PreCadastrosCondicaoPagamento
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.PreCadastrosCondicaoPagamento`"
+    title: Geral Condição de Pagamento
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: numeroDias
+        sql: NumeroDias
+        type: number
+        title: Número de Dias
+
+      - name: porcentagem
+        sql: Porcentagem
+        type: number
+        title: Porcentagem
+
+      - name: codigoCondicaoParcelamento
+        sql: CodigoCondicaoParcelamento
+        type: string
+        title: Código

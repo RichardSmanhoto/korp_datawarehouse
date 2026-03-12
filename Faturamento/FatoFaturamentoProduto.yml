@@ -1,0 +1,555 @@
+cubes:
+  - name: FatoFaturamentoProduto
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFaturamentoProduto`"
+    title: Faturamento Produto
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: FiscalNCM
+        relationship: belongsTo
+        sql: "{CUBE}.IdNcm = {FiscalNCM}.Id"
+
+      - name: ContabilOperacaoContabil
+        relationship: belongsTo
+        sql: "{CUBE}.IdOperacaoContabil = {ContabilOperacaoContabil}.Id"
+
+      - name: FiscalCFOP
+        relationship: belongsTo
+        sql: "{CUBE}.IdCfop = {FiscalCFOP}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: FaturamentoNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdNotaFiscal = {FaturamentoNotaFiscal}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: CompraTransportadora
+        relationship: belongsTo
+        sql: "{CUBE}.IdTransportadora = {CompraTransportadora}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: PreCadastrosEstado
+        relationship: belongsTo
+        sql: "{CUBE}.IdEstado = {PreCadastrosEstado}.Id"
+
+      - name: FaturamentoTipoFrete
+        relationship: belongsTo
+        sql: "{CUBE}.IdTipoFrete = {FaturamentoTipoFrete}.Id"
+
+      - name: PreCadastrosMunicipio
+        relationship: belongsTo
+        sql: "{CUBE}.IdMunicipio = {PreCadastrosMunicipio}.Id"
+
+      - name: PreCadastrosPais
+        relationship: belongsTo
+        sql: "{CUBE}.IdPais = {PreCadastrosPais}.Id"
+
+      - name: VendaPedido
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaPedido = {VendaPedido}.Id"
+
+      - name: LogisticaProdutoCategoria
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoCategoria = {LogisticaProdutoCategoria}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: FaturamentoStatusNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturamentoStatusNotaFiscal = {FaturamentoStatusNotaFiscal}.Id"
+
+      - name: LogisticaProdutoMarca
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoMarca = {LogisticaProdutoMarca}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: Quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: valorFreteSum
+        sql: ValorFrete
+        type: sum
+        title: Soma do Frete
+
+      - name: valorSeguroSum
+        sql: ValorSeguro
+        type: sum
+        title: Soma do Seguro
+
+      - name: valorOutrasDespesasSum
+        sql: ValorOutrasDespesas
+        type: sum
+        title: Soma das Outras Despesas
+
+      - name: valorDescontoSum
+        sql: ValorDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorTotalDescontoSum
+        sql: ValorTotalDesconto
+        type: sum
+        title: Soma do Desconto (total)
+
+      - name: valorAcrescimoSum
+        sql: ValorAcrescimo
+        type: sum
+        title: Soma do Acréscimo
+
+      - name: valorUnitarioMenosAcrescimoSum
+        sql: ValorUnitarioMenosAcrescimo
+        type: sum
+        title: Soma do Valor Unitário (menos acréscimo)
+
+      - name: valorTotalIpiSum
+        sql: ValorTotalIpi
+        type: sum
+        title: Soma do IPI (total)
+
+      - name: valorBaseIpiSum
+        sql: ValorBaseIpi
+        type: sum
+        title: Soma do IPI (base)
+
+      - name: aliquotaIpiSum
+        sql: AliquotaIpi
+        type: sum
+        title: Soma da Alíquota IPI
+
+      - name: valorTotalIcmsSum
+        sql: ValorTotalIcms
+        type: sum
+        title: Soma do ICMS (total)
+
+      - name: valorBaseIcmsSum
+        sql: ValorBaseIcms
+        type: sum
+        title: Soma do ICMS (base)
+
+      - name: aliquotaIcmsSum
+        sql: AliquotaIcms
+        type: sum
+        title: Soma da Alíquota ICMS
+
+      - name: valorTotalPisSum
+        sql: ValorTotalPis
+        type: sum
+        title: Soma do PIS (total)
+
+      - name: valorBasePisSum
+        sql: ValorBasePis
+        type: sum
+        title: Soma do PIS (base)
+
+      - name: aliquotaPisSum
+        sql: AliquotaPis
+        type: sum
+        title: Soma da Alíquota PIS
+
+      - name: valorTotalCofinsSum
+        sql: ValorTotalCofins
+        type: sum
+        title: Soma do COFINS (total)
+
+      - name: valorBaseCofinsSum
+        sql: ValorBaseCofins
+        type: sum
+        title: Soma do COFINS (base)
+
+      - name: aliquotaCofinsSum
+        sql: AliquotaCofins
+        type: sum
+        title: Soma da Alíquota COFINS
+
+      - name: valorTotalIssSum
+        sql: ValorTotalIss
+        type: sum
+        title: Soma do ISS (total)
+
+      - name: valorBaseIssSum
+        sql: ValorBaseIss
+        type: sum
+        title: Soma do ISS (base)
+
+      - name: aliquotaIssSum
+        sql: AliquotaIss
+        type: sum
+        title: Soma da Alíquota ISS
+
+      - name: valorTotalIcmsstSum
+        sql: ValorTotalIcmsst
+        type: sum
+        title: Soma do ICMS-ST (total)
+
+      - name: valorBaseIcmsstSum
+        sql: ValorBaseIcmsst
+        type: sum
+        title: Soma do ICMS-ST (base)
+
+      - name: aliquotaIcmsstSum
+        sql: AliquotaIcmsst
+        type: sum
+        title: Soma da Alíquota ICMS-ST
+
+      - name: valorCustoMedioSum
+        sql: ValorCustoMedio
+        type: sum
+        title: Soma do Custo Médio
+
+      - name: valorCustoUnitarioSum
+        sql: ValorCustoUnitario
+        type: sum
+        title: Soma do Custo Unitário
+
+      - name: valorPesoLiquidoSum
+        sql: ValorPesoLiquido
+        type: sum
+        title: Soma do Peso Líquido (kg)
+
+      - name: valorPesoBrutoSum
+        sql: ValorPesoBruto
+        type: sum
+        title: Soma do Peso Bruto (kg)
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idNcm
+        sql: IdNcm
+        type: number
+        title: NCM
+
+      - name: idOperacaoContabil
+        sql: IdOperacaoContabil
+        type: number
+        title: Operação Contábil
+
+      - name: idCfop
+        sql: IdCfop
+        type: number
+        title: CFOP
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idNotaFiscal
+        sql: IdNotaFiscal
+        type: number
+        title: Nota Fiscal
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idTransportadora
+        sql: IdTransportadora
+        type: number
+        title: Transportadora
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idEstado
+        sql: IdEstado
+        type: number
+        title: Estado
+
+      - name: idTipoFrete
+        sql: IdTipoFrete
+        type: number
+        title: Tipo de Frete
+
+      - name: idMunicipio
+        sql: IdMunicipio
+        type: number
+        title: Município
+
+      - name: idPais
+        sql: IdPais
+        type: number
+        title: País
+
+      - name: idVendaPedido
+        sql: IdVendaPedido
+        type: number
+        title: Pedido
+
+      - name: idProdutoCategoria
+        sql: IdProdutoCategoria
+        type: number
+        title: Categoria do Produto
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idFaturamentoStatusNotaFiscal
+        sql: IdFaturamentoStatusNotaFiscal
+        type: string
+        title: Status da Nota Fiscal
+
+      - name: idProdutoMarca
+        sql: IdProdutoMarca
+        type: number
+        title: Marca do Produto
+
+      - name: quantidade
+        sql: Quantidade
+        type: number
+        title: Quantidade
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: valorFrete
+        sql: ValorFrete
+        type: number
+        title: Frete
+
+      - name: valorSeguro
+        sql: ValorSeguro
+        type: number
+        title: Seguro
+
+      - name: valorOutrasDespesas
+        sql: ValorOutrasDespesas
+        type: number
+        title: Outras Despesas
+
+      - name: valorDesconto
+        sql: ValorDesconto
+        type: number
+        title: Desconto
+
+      - name: valorTotalDesconto
+        sql: ValorTotalDesconto
+        type: number
+        title: Desconto (total)
+
+      - name: valorAcrescimo
+        sql: ValorAcrescimo
+        type: number
+        title: Acréscimo
+
+      - name: valorUnitarioMenosAcrescimo
+        sql: ValorUnitarioMenosAcrescimo
+        type: number
+        title: Valor Unitário (menos acréscimo)
+
+      - name: valorTotalIpi
+        sql: ValorTotalIpi
+        type: number
+        title: IPI (total)
+
+      - name: valorBaseIpi
+        sql: ValorBaseIpi
+        type: number
+        title: IPI (base)
+
+      - name: aliquotaIpi
+        sql: AliquotaIpi
+        type: number
+        title: Alíquota IPI
+
+      - name: valorTotalIcms
+        sql: ValorTotalIcms
+        type: number
+        title: ICMS (total)
+
+      - name: valorBaseIcms
+        sql: ValorBaseIcms
+        type: number
+        title: ICMS (base)
+
+      - name: aliquotaIcms
+        sql: AliquotaIcms
+        type: number
+        title: Alíquota ICMS
+
+      - name: valorTotalPis
+        sql: ValorTotalPis
+        type: number
+        title: PIS (total)
+
+      - name: valorBasePis
+        sql: ValorBasePis
+        type: number
+        title: PIS (base)
+
+      - name: aliquotaPis
+        sql: AliquotaPis
+        type: number
+        title: Alíquota PIS
+
+      - name: valorTotalCofins
+        sql: ValorTotalCofins
+        type: number
+        title: COFINS (total)
+
+      - name: valorBaseCofins
+        sql: ValorBaseCofins
+        type: number
+        title: COFINS (base)
+
+      - name: aliquotaCofins
+        sql: AliquotaCofins
+        type: number
+        title: Alíquota COFINS
+
+      - name: valorTotalIss
+        sql: ValorTotalIss
+        type: number
+        title: ISS (total)
+
+      - name: valorBaseIss
+        sql: ValorBaseIss
+        type: number
+        title: ISS (base)
+
+      - name: aliquotaIss
+        sql: AliquotaIss
+        type: number
+        title: Alíquota ISS
+
+      - name: valorTotalIcmsst
+        sql: ValorTotalIcmsst
+        type: number
+        title: ICMS-ST (total)
+
+      - name: valorBaseIcmsst
+        sql: ValorBaseIcmsst
+        type: number
+        title: ICMS-ST (base)
+
+      - name: aliquotaIcmsst
+        sql: AliquotaIcmsst
+        type: number
+        title: Alíquota ICMS-ST
+
+      - name: valorCustoMedio
+        sql: ValorCustoMedio
+        type: number
+        title: Custo Médio
+
+      - name: valorCustoUnitario
+        sql: ValorCustoUnitario
+        type: number
+        title: Custo Unitário
+
+      - name: valorPesoLiquido
+        sql: ValorPesoLiquido
+        type: number
+        title: Peso Líquido (kg)
+
+      - name: valorPesoBruto
+        sql: ValorPesoBruto
+        type: number
+        title: Peso Bruto (kg)

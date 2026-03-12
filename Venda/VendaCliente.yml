@@ -1,0 +1,78 @@
+cubes:
+  - name: VendaCliente
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.VendaCliente`"
+    title: Venda Cliente
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigo
+        sql: Codigo
+        type: string
+        title: Código
+
+      - name: razaoSocial
+        sql: RazaoSocial
+        type: string
+        title: Razão Social
+
+      - name: codigoSegmento
+        sql: CodigoSegmento
+        type: string
+        title: Cód. Segmento
+
+      - name: descricaoSegmento
+        sql: DescricaoSegmento
+        type: string
+        title: Segmento
+
+      - name: codigoClasse
+        sql: CodigoClasse
+        type: string
+        title: Cód. Classe
+
+      - name: descricaoClasse
+        sql: DescricaoClasse
+        type: string
+        title: Classe
+
+      - name: codigoPais
+        sql: CodigoPais
+        type: number
+        title: Cód. País
+
+      - name: descricaoPais
+        sql: DescricaoPais
+        type: string
+        title: País
+
+      - name: codigoEstado
+        sql: CodigoEstado
+        type: string
+        title: Cód. Estado
+
+      - name: descricaoEstado
+        sql: DescricaoEstado
+        type: string
+        title: Estado
+
+      - name: codigoCidade
+        sql: CodigoCidade
+        type: string
+        title: Cód. Cidade
+
+      - name: descricaoCidade
+        sql: DescricaoCidade
+        type: string
+        title: Cidade

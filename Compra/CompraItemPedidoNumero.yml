@@ -1,0 +1,16 @@
+cubes:
+  - name: CompraItemPedidoNumero
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.CompraItemPedidoNumero`"
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true

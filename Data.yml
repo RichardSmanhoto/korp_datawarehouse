@@ -1,0 +1,43 @@
+cubes:
+  - name: Data
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.Data`"
+    title: Geral Data
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: ano
+        sql: Ano
+        type: number
+        title: Ano
+
+      - name: mes
+        sql: Mes
+        type: number
+        title: Mês
+
+      - name: dia
+        sql: Dia
+        type: number
+        title: Dia
+
+      - name: dataCompleta
+        sql: DataCompleta
+        type: time
+        title: Data (extenso)
+
+      - name: mesExtenso
+        sql: MesExtenso
+        type: string
+        title: Mês (extenso)

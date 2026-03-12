@@ -1,0 +1,295 @@
+cubes:
+  - name: FatoFaturamentoNotaFiscal
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFaturamentoNotaFiscal`"
+    title: Faturamento Nota Fiscal
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: FaturamentoTipoFrete
+        relationship: belongsTo
+        sql: "{CUBE}.IdTipoFrete = {FaturamentoTipoFrete}.Id"
+
+      - name: CompraTransportadora
+        relationship: belongsTo
+        sql: "{CUBE}.IdTransportadora = {CompraTransportadora}.Id"
+
+      - name: PreCadastrosMunicipio
+        relationship: belongsTo
+        sql: "{CUBE}.IdMunicipio = {PreCadastrosMunicipio}.Id"
+
+      - name: PreCadastrosPais
+        relationship: belongsTo
+        sql: "{CUBE}.IdPais = {PreCadastrosPais}.Id"
+
+      - name: VendaSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteSegmento = {VendaSegmento}.Id"
+
+      - name: VendaClienteClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteClasse = {VendaClienteClasse}.Id"
+
+      - name: PreCadastrosEstado
+        relationship: belongsTo
+        sql: "{CUBE}.IdEstado = {PreCadastrosEstado}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: DataEmissao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEmissao = {DataEmissao}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: FaturamentoStatusNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturamentoStatusNotaFiscal = {FaturamentoStatusNotaFiscal}.Id"
+
+      - name: FaturamentoNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdFaturamentoNotaFiscal = {FaturamentoNotaFiscal}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: valorProdutosSum
+        sql: ValorProdutos
+        type: sum
+        title: Soma do Valor dos Produtos
+
+      - name: valorFreteSum
+        sql: ValorFrete
+        type: sum
+        title: Soma do Frete
+
+      - name: valorSeguroSum
+        sql: ValorSeguro
+        type: sum
+        title: Soma do Seguro
+
+      - name: valorOutrasDespesasSum
+        sql: ValorOutrasDespesas
+        type: sum
+        title: Soma das Outras Despesas
+
+      - name: valorDescontoSum
+        sql: ValorDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorIpiSum
+        sql: ValorIpi
+        type: sum
+        title: Soma do IPI
+
+      - name: valorIcmsSum
+        sql: ValorIcms
+        type: sum
+        title: Soma do ICMS
+
+      - name: valorIcmsstSum
+        sql: ValorIcmsst
+        type: sum
+        title: Soma do ICMS-ST
+
+      - name: valorPisSum
+        sql: ValorPis
+        type: sum
+        title: Soma do PIS
+
+      - name: valorCofinsSum
+        sql: ValorCofins
+        type: sum
+        title: Soma do COFINS
+
+      - name: valorIssSum
+        sql: ValorIss
+        type: sum
+        title: Soma do ISS
+
+      - name: valorCustoMedioSum
+        sql: ValorCustoMedio
+        type: sum
+        title: Soma do Custo Médio
+
+      - name: valorBonificacaoSum
+        sql: ValorBonificacao
+        type: sum
+        title: Soma da Bonificação
+
+      - name: valorRetencaoSum
+        sql: ValorRetencao
+        type: sum
+        title: Soma da Retenção
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string # UUID -> string funciona bem no Cube
+        primary_key: true
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idTipoFrete
+        sql: IdTipoFrete
+        type: number
+        title: Tipo de Frete
+
+      - name: idTransportadora
+        sql: IdTransportadora
+        type: number
+        title: Transportadora
+
+      - name: idMunicipio
+        sql: IdMunicipio
+        type: number
+        title: Município
+
+      - name: idPais
+        sql: IdPais
+        type: number
+        title: País
+
+      - name: idClienteSegmento
+        sql: IdClienteSegmento
+        type: number
+        title: Segmento do Cliente
+
+      - name: idClienteClasse
+        sql: IdClienteClasse
+        type: number
+        title: Classe do Cliente
+
+      - name: idEstado
+        sql: IdEstado
+        type: number
+        title: Estado
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idDataEmissao
+        sql: IdDataEmissao
+        type: number
+        title: Data de Emissão
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idFaturamentoStatusNotaFiscal
+        sql: IdFaturamentoStatusNotaFiscal
+        type: string
+        title: Status da Nota Fiscal
+
+      - name: idFaturamentoNotaFiscal
+        sql: IdFaturamentoNotaFiscal
+        type: number
+        title: Nota Fiscal
+
+      # Dimensões (todas as colunas numéricas)
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: valorProdutos
+        sql: ValorProdutos
+        type: number
+        title: Valor dos Produtos
+
+      - name: valorFrete
+        sql: ValorFrete
+        type: number
+        title: Frete
+
+      - name: valorSeguro
+        sql: ValorSeguro
+        type: number
+        title: Seguro
+
+      - name: valorOutrasDespesas
+        sql: ValorOutrasDespesas
+        type: number
+        title: Outras Despesas
+
+      - name: valorDesconto
+        sql: ValorDesconto
+        type: number
+        title: Desconto
+
+      - name: valorIpi
+        sql: ValorIpi
+        type: number
+        title: IPI
+
+      - name: valorIcms
+        sql: ValorIcms
+        type: number
+        title: ICMS
+
+      - name: valorIcmsst
+        sql: ValorIcmsst
+        type: number
+        title: ICMS-ST
+
+      - name: valorPis
+        sql: ValorPis
+        type: number
+        title: PIS
+
+      - name: valorCofins
+        sql: ValorCofins
+        type: number
+        title: COFINS
+
+      - name: valorIss
+        sql: ValorIss
+        type: number
+        title: ISS
+
+      - name: valorCustoMedio
+        sql: ValorCustoMedio
+        type: number
+        title: Custo Médio
+
+      - name: valorBonificacao
+        sql: ValorBonificacao
+        type: number
+        title: Bonificação
+
+      - name: valorRetencao
+        sql: ValorRetencao
+        type: number
+        title: Retenção

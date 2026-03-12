@@ -1,0 +1,92 @@
+cubes:
+  - name: FatoLogisticaMovimentacaoLocal
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaMovimentacaoLocal`"
+    title: Logística Movimentação Local
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProdutoLote
+        relationship: belongsTo
+        sql: "{CUBE}.IdLote = {LogisticaProdutoLote}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoLocal
+        relationship: belongsTo
+        sql: "{CUBE}.IdLocal = {LogisticaProdutoLocal}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: DataTempo
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataTempo = {DataTempo}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: saldoSum
+        sql: Saldo
+        type: sum
+        title: Soma do Saldo
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idLote
+        sql: IdLote
+        type: number
+        title: Lote
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idLocal
+        sql: IdLocal
+        type: number
+        title: Local
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idDataTempo
+        sql: IdDataTempo
+        type: number
+        title: Data Tempo
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: saldo
+        sql: Saldo
+        type: number
+        title: Saldo

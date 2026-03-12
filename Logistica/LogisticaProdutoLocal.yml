@@ -1,0 +1,62 @@
+cubes:
+  - name: LogisticaProdutoLocal
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.LogisticaProdutoLocal`"
+    title: Logística Local Produto
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: sigla
+        sql: Sigla
+        type: string
+        title: Sigla
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição
+
+      - name: localPlanejavel
+        sql: LocalPlanejavel
+        type: boolean
+        title: Planejável
+
+      - name: localAcabado
+        sql: LocalAcabado
+        type: boolean
+        title: Acabado
+
+      - name: localQuantidadeEntrada
+        sql: LocalQuantidadeEntrada
+        type: boolean
+        title: Quantidade Entrada
+
+      - name: localQuantidadeSaida
+        sql: LocalQuantidadeSaida
+        type: boolean
+        title: Quantidade Saída
+
+      - name: localPrincipal
+        sql: LocalPrincipal
+        type: boolean
+        title: Principal
+
+      - name: localExpedicao
+        sql: LocalExpedicao
+        type: boolean
+        title: Expedição
+
+      - name: localConserto
+        sql: LocalConserto
+        type: boolean
+        title: Conserto

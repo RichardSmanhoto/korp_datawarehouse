@@ -1,0 +1,21 @@
+cubes:
+  - name: StatusRegistro
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.StatusRegistro`"
+    title: Geral Registro Ativo
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+
+      - name: ativo
+        sql: Ativo
+        type: boolean

@@ -1,0 +1,22 @@
+cubes:
+  - name: FinanceiroTipoConsolidacao
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FinanceiroTipoConsolidacao`"
+    title: Financeiro Tipo Consolidação
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição

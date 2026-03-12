@@ -1,0 +1,33 @@
+cubes:
+  - name: VendaPedidoFaturar
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.VendaPedidoFaturar`"
+    title: Venda Pedido Faturar
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: numeroPedido
+        sql: NumeroPedido
+        type: string
+        title: Número
+
+      - name: valorSinal
+        sql: ValorSinal
+        type: number
+        title: Sinal
+
+      - name: codigoCondicaoParcelamento
+        sql: CodigoCondicaoParcelamento
+        type: string
+        title: Cód. Condição de Parcelamento

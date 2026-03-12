@@ -1,0 +1,327 @@
+cubes:
+  - name: FatoCompraItemNota
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoCompraItemNota`"
+    title: Compra Item da Nota
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoCategoria
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoCategoria = {LogisticaProdutoCategoria}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoMarca
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoMarca = {LogisticaProdutoMarca}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: DataEntrada
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataEntrada = {DataEntrada}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: CompraFornecedorClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedorClasse = {CompraFornecedorClasse}.Id"
+
+      - name: FornecedorSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedorSegmento = {FornecedorSegmento}.Id"
+
+      - name: FiscalCFOP
+        relationship: belongsTo
+        sql: "{CUBE}.IdCfop = {FiscalCFOP}.Id"
+
+      - name: CompraNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdNotaFiscal = {CompraNotaFiscal}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: VendaClienteClasse
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteClasse = {VendaClienteClasse}.Id"
+
+      - name: ClienteSegmento
+        relationship: belongsTo
+        sql: "{CUBE}.IdClienteSegmento = {ClienteSegmento}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: CompraItemNotaFiscalNumero
+        relationship: belongsTo
+        sql: "{CUBE}.IdItemNotaFiscalCompra = {CompraItemNotaFiscalNumero}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+      - name: DataCriacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataCriacao = {DataCriacao}.Id"
+
+      - name: DataAtualizacao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataAtualizacao = {DataAtualizacao}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: Quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: valorUnitarioSum
+        sql: ValorUnitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: valorTotalDescontoSum
+        sql: ValorTotalDesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+      - name: valorIcmsSum
+        sql: ValorIcms
+        type: sum
+        title: Soma do ICMS
+
+      - name: valorIpiSum
+        sql: ValorIpi
+        type: sum
+        title: Soma do IPI
+
+      - name: valorPisSum
+        sql: ValorPis
+        type: sum
+        title: Soma do PIS
+
+      - name: valorCofinsSum
+        sql: ValorCofins
+        type: sum
+        title: Soma do COFINS
+
+      - name: valorIssSum
+        sql: ValorIss
+        type: sum
+        title: Soma do ISS
+
+      - name: valorIcmsStSum
+        sql: ValorIcmsSt
+        type: sum
+        title: Soma do ICMS-ST
+
+      - name: valorTotalRetencaoSum
+        sql: ValorTotalRetencao
+        type: sum
+        title: Soma da Retenção
+
+      - name: valorCustoUnitarioSum
+        sql: ValorCustoUnitario
+        type: sum
+        title: Soma do Custo Unitário
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idProdutoCategoria
+        sql: IdProdutoCategoria
+        type: number
+        title: Categoria do Produto
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoMarca
+        sql: IdProdutoMarca
+        type: number
+        title: Marca do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idDataEntrada
+        sql: IdDataEntrada
+        type: number
+        title: Data de Entrada
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idFornecedorClasse
+        sql: IdFornecedorClasse
+        type: number
+        title: Classe do Fornecedor
+
+      - name: idFornecedorSegmento
+        sql: IdFornecedorSegmento
+        type: number
+        title: Segmento do Fornecedor
+
+      - name: idCfop
+        sql: IdCfop
+        type: number
+        title: CFOP
+
+      - name: idNotaFiscal
+        sql: IdNotaFiscal
+        type: number
+        title: Nota Fiscal
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idClienteClasse
+        sql: IdClienteClasse
+        type: number
+        title: Classe do Cliente
+
+      - name: idClienteSegmento
+        sql: IdClienteSegmento
+        type: number
+        title: Segmento do Cliente
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idItemNotaFiscalCompra
+        sql: IdItemNotaFiscalCompra
+        type: number
+        title: Item da Nota Fiscal
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: idDataCriacao
+        sql: IdDataCriacao
+        type: number
+        title: Data de Criação
+
+      - name: idDataAtualizacao
+        sql: IdDataAtualizacao
+        type: number
+        title: Data de Atualização
+
+      - name: quantidade
+        sql: Quantidade
+        type: number
+        title: Quantidade
+
+      - name: valorUnitario
+        sql: ValorUnitario
+        type: number
+        title: Valor Unitário
+
+      - name: valorTotalDesconto
+        sql: ValorTotalDesconto
+        type: number
+        title: Desconto
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total
+
+      - name: valorIcms
+        sql: ValorIcms
+        type: number
+        title: ICMS
+
+      - name: valorIpi
+        sql: ValorIpi
+        type: number
+        title: IPI
+
+      - name: valorPis
+        sql: ValorPis
+        type: number
+        title: PIS
+
+      - name: valorCofins
+        sql: ValorCofins
+        type: number
+        title: COFINS
+
+      - name: valorIss
+        sql: ValorIss
+        type: number
+        title: ISS
+
+      - name: valorIcmsSt
+        sql: ValorIcmsSt
+        type: number
+        title: ICMS-ST
+
+      - name: valorTotalRetencao
+        sql: ValorTotalRetencao
+        type: number
+        title: Retenção
+
+      - name: valorCustoUnitario
+        sql: ValorCustoUnitario
+        type: number
+        title: Custo Unitário

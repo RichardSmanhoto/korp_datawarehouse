@@ -1,0 +1,33 @@
+cubes:
+
+  - name: ContabilLancamentoContabilCabecalho
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.ContabilLancamentoContabilCabecalho`"
+    title: Contábil Cabeçalho Lançamento Contábil
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: documento
+        sql: Documento
+        type: string
+        title: Documento
+
+      - name: tipoLancamento
+        sql: TipoLancamento
+        type: string
+        title: Tipo
+
+      - name: numeroLancamento
+        sql: NumeroLancamento
+        type: number
+        title: Número

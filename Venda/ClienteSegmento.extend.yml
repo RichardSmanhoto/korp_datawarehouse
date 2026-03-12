@@ -1,0 +1,3 @@
+cubes:
+  - name: ClienteSegmento
+    extends: VendaSegmento

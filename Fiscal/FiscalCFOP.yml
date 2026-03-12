@@ -1,0 +1,52 @@
+cubes:
+  - name: FiscalCFOP
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FiscalCFOP`"
+    title: Fiscal CFOP
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigo
+        sql: Codigo
+        type: string
+        title: Código
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição
+
+      - name: codigoTipoCfop
+        sql: CodigoTipoCfop
+        type: number
+        title: Cód. Tipo
+
+      - name: descricaoTipoCfop
+        sql: DescricaoTipoCfop
+        type: string
+        title: Tipo
+
+      - name: faturamento
+        sql: Faturamento
+        type: boolean
+        title: Faturamento
+
+      - name: devolucao
+        sql: Devolucao
+        type: boolean
+        title: Devolução
+
+      - name: entradaSaida
+        sql: EntradaSaida
+        type: string
+        title: Entrada/Saída

@@ -1,0 +1,127 @@
+cubes:
+  - name: FatoVendaMetaEquipe
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoVendaMetaEquipe`"
+    title: Venda Meta Equipe
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: DataInicial
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataInicial = {DataInicial}.Id"
+
+      - name: DataFinal
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataFinal = {DataFinal}.Id"
+
+      - name: VendaEquipe
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaEquipe = {VendaEquipe}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoFamilia
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoFamilia = {LogisticaProdutoFamilia}.Id"
+
+      - name: LogisticaProdutoGrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoGrupo = {LogisticaProdutoGrupo}.Id"
+
+      - name: LogisticaProdutoSubgrupo
+        relationship: belongsTo
+        sql: "{CUBE}.IdProdutoSubGrupo = {LogisticaProdutoSubgrupo}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: VendaTipoMeta
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaTipoMeta = {VendaTipoMeta}.Id"
+
+      - name: VendaPeriodoMeta
+        relationship: belongsTo
+        sql: "{CUBE}.IdVendaPeriodoMeta = {VendaPeriodoMeta}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorMetaSum
+        sql: ValorMeta
+        type: sum
+        title: Soma do Valor
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+
+      - name: idDataInicial
+        sql: IdDataInicial
+        type: number
+        title: Data Inicial
+
+      - name: idDataFinal
+        sql: IdDataFinal
+        type: number
+        title: Data Final
+
+      - name: idVendaEquipe
+        sql: IdVendaEquipe
+        type: string
+        title: Equipe
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idProdutoFamilia
+        sql: IdProdutoFamilia
+        type: number
+        title: Família do Produto
+
+      - name: idProdutoGrupo
+        sql: IdProdutoGrupo
+        type: number
+        title: Grupo do Produto
+
+      - name: idProdutoSubGrupo
+        sql: IdProdutoSubGrupo
+        type: number
+        title: Subgrupo do Produto
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idVendaTipoMeta
+        sql: IdVendaTipoMeta
+        type: string
+        title: Tipo
+
+      - name: idVendaPeriodoMeta
+        sql: IdVendaPeriodoMeta
+        type: string
+        title: Período
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: valorMeta
+        sql: ValorMeta
+        type: number
+        title: Valor

@@ -1,0 +1,120 @@
+cubes:
+  - name: FatoFinanceiroProvisao
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFinanceiroProvisao`"
+    title: Financeiro Provisão
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FinanceiroProvisao
+        relationship: belongsTo
+        sql: "{CUBE}.IdProvisao = {FinanceiroProvisao}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: FinanceiroBanco
+        relationship: belongsTo
+        sql: "{CUBE}.IdBanco = {FinanceiroBanco}.Id"
+
+      - name: FinanceiroContaGerencial
+        relationship: belongsTo
+        sql: "{CUBE}.IdContaGerencial = {FinanceiroContaGerencial}.Id"
+
+      - name: FinanceiroCentroCusto
+        relationship: belongsTo
+        sql: "{CUBE}.IdCentroCusto = {FinanceiroCentroCusto}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: Data
+        relationship: belongsTo
+        sql: "{CUBE}.IdData = {Data}.Id"
+
+      - name: StatusRegistro
+        relationship: belongsTo
+        sql: "{CUBE}.IdStatusRegistro = {StatusRegistro}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorDebitoSum
+        sql: ValorDebito
+        type: sum
+        title: Soma do Valor Débito
+
+      - name: valorCreditoSum
+        sql: ValorCredito
+        type: sum
+        title: Soma do Valor Crédito
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idProvisao
+        sql: IdProvisao
+        type: number
+        title: Provisão
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idBanco
+        sql: IdBanco
+        type: number
+        title: Banco
+
+      - name: idContaGerencial
+        sql: IdContaGerencial
+        type: number
+        title: Conta Gerencial
+
+      - name: idCentroCusto
+        sql: IdCentroCusto
+        type: number
+        title: Centro de Custo
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idData
+        sql: IdData
+        type: number
+        title: Data
+
+      - name: idStatusRegistro
+        sql: IdStatusRegistro
+        type: string
+        title: Registro Ativo
+
+      - name: valorDebito
+        sql: ValorDebito
+        type: number
+        title: Valor Débito
+
+      - name: valorCredito
+        sql: ValorCredito
+        type: number
+        title: Valor Crédito

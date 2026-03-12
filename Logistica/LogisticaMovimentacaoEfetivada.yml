@@ -1,0 +1,22 @@
+cubes:
+  - name: LogisticaMovimentacaoEfetivada
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.LogisticaMovimentacaoEfetivada`"
+    title: Logística Movimentação Efetivada
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: efetiva
+        sql: Efetiva
+        type: boolean
+        title: Efetiva

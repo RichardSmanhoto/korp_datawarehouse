@@ -1,0 +1,20 @@
+cubes:
+  - name: DataTempo
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.DataTempo`"
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+
+      - name: dataCompleta
+        sql: DataCompleta
+        type: time

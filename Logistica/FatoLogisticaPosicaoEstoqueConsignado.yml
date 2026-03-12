@@ -1,0 +1,93 @@
+cubes:
+  - name: FatoLogisticaPosicaoEstoqueConsignado
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaPosicaoEstoqueConsignado`"
+    title: Logística Posição Estoque Consignado
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.IdCliente = {VendaCliente}.Id"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.IdFornecedor = {CompraFornecedor}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: CompraNotaFiscal
+        relationship: belongsTo
+        sql: "{CUBE}.IdCompraNotaFiscal = {CompraNotaFiscal}.Id"
+
+      - name: DataPosicao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataPosicao = {DataPosicao}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: saldoSum
+        sql: Saldo
+        type: sum
+        title: Soma do Saldo
+
+      - name: valorTotalSum
+        sql: ValorTotal
+        type: sum
+        title: Soma do Valor Total
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idCliente
+        sql: IdCliente
+        type: number
+        title: Cliente
+
+      - name: idFornecedor
+        sql: IdFornecedor
+        type: number
+        title: Fornecedor
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idCompraNotaFiscal
+        sql: IdCompraNotaFiscal
+        type: number
+        title: Nota Fiscal
+
+      - name: idDataPosicao
+        sql: IdDataPosicao
+        type: number
+        title: Data
+
+      - name: saldo
+        sql: Saldo
+        type: number
+        title: Saldo
+
+      - name: valorTotal
+        sql: ValorTotal
+        type: number
+        title: Valor Total

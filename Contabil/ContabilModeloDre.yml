@@ -1,0 +1,57 @@
+cubes:
+  - name: ContabilModeloDre
+    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.ContabilModeloDre`"
+    title: Contábil Modelo DRE
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: idErp
+        sql: IdErp
+        type: number
+        title: Código
+
+      - name: descricao
+        sql: Descricao
+        type: string
+        title: Descrição
+
+      - name: descricaoSintetico
+        sql: DescricaoSintetico
+        type: string
+        title: Sintético
+
+      - name: codigoContaContabil
+        sql: CodigoContaContabil
+        type: number
+        title: Cód. Conta Contábil
+
+      - name: descricaoContaContabil
+        sql: DescricaoContaContabil
+        type: string
+        title: Conta Contábil
+
+      - name: ordem
+        sql: Ordem
+        type: number
+        title: Ordem
+
+      - name: operador
+        sql: Operador
+        type: string
+        title: Operador
+
+      - name: ativo
+        sql: Ativo
+        type: boolean
+        title: Ativo
