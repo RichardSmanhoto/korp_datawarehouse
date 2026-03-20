@@ -76,3 +76,8 @@ cubes:
         sql: DescricaoCidade
         type: string
         title: Cidade
+
+      - name: CGC
+        sql: CGC
+        type: string
+        title: CGC
