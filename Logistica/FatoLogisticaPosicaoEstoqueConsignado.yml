@@ -1,6 +1,6 @@
 cubes:
   - name: FatoLogisticaPosicaoEstoqueConsignado
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoLogisticaPosicaoEstoqueConsignado`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoLogisticaPosicaoEstoqueConsignado`"
     title: Logística Posição Estoque Consignado
     
     meta:

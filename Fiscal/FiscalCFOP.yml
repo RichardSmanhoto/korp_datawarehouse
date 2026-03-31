@@ -1,6 +1,6 @@
 cubes:
   - name: FiscalCFOP
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FiscalCFOP`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FiscalCFOP`"
     title: Fiscal CFOP
     meta:
       - versao: "__COMMIT_SHA__"

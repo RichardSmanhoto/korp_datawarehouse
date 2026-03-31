@@ -1,6 +1,6 @@
 cubes:
   - name: PreCadastrosMunicipio
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.PreCadastrosMunicipio`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_PreCadastrosMunicipio`"
     title: Geral Município
 
     meta:

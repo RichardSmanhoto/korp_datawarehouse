@@ -1,7 +1,7 @@
 cubes:
 
   - name: ContabilOperacaoContabil
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.ContabilOperacaoContabil`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_ContabilOperacaoContabil`"
     title: Contábil Operação Contábil
     meta:
       - versao: "__COMMIT_SHA__"

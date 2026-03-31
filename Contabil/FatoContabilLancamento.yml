@@ -1,6 +1,6 @@
 cubes:
   - name: FatoContabilLancamento
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoContabilLancamento`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoContabilLancamento`"
     title: Contábil Lançamento
     
     meta:

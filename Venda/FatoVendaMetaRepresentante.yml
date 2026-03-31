@@ -1,6 +1,6 @@
 cubes:
   - name: FatoVendaMetaRepresentante
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoVendaMetaRepresentante`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoVendaMetaRepresentante`"
     title: Venda Meta Representante
     
     meta:

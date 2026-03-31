@@ -1,6 +1,6 @@
 cubes:
   - name: LogisticaProdutoGrupo
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.LogisticaProdutoGrupo`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_LogisticaProdutoGrupo`"
     title: Logística Grupo Produto
     meta:
       - versao: "__COMMIT_SHA__"

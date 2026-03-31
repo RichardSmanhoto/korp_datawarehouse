@@ -1,6 +1,6 @@
 cubes:
   - name: PreCadastrosCondicaoPagamento
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.PreCadastrosCondicaoPagamento`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_PreCadastrosCondicaoPagamento`"
     title: Geral Condição de Pagamento
 
     meta:

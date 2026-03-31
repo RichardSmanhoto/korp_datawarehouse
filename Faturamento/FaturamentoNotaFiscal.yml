@@ -1,7 +1,7 @@
 cubes:
 
   - name: FaturamentoNotaFiscal
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FaturamentoNotaFiscal`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FaturamentoNotaFiscal`"
     title: Faturamento Nota Fiscal
     meta:
       - versao: "__COMMIT_SHA__"

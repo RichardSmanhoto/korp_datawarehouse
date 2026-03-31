@@ -1,6 +1,6 @@
 cubes:
   - name: DataTempo
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.DataTempo`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_DataTempo`"
     
     meta:
       - versao: "__COMMIT_SHA__"

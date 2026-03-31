@@ -1,6 +1,6 @@
 cubes:
   - name: VendaMembrosEquipe
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.VendaMembrosEquipe`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaMembrosEquipe`"
     title: Venda Membros Equipe
 
     meta:

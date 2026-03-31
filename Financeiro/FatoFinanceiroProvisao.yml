@@ -1,6 +1,6 @@
 cubes:
   - name: FatoFinanceiroProvisao
-    sql_table: "`viasoft_elt`.`{COMPILE_CONTEXT.securityContext.schema}.FatoFinanceiroProvisao`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoFinanceiroProvisao`"
     title: Financeiro Provisão
     
     meta:
