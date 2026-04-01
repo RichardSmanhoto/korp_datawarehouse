@@ -1,6 +1,6 @@
 cubes:
   - name: FinanceiroContaGerencial
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroContaGerencial`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroContaGerencial`"
     title: Financeiro Conta Gerencial
     meta:
       - versao: "__COMMIT_SHA__"

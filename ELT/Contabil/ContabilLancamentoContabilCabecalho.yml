@@ -1,7 +1,7 @@
 cubes:
 
   - name: ContabilLancamentoContabilCabecalho
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_ContabilLancamentoContabilCabecalho`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_ContabilLancamentoContabilCabecalho`"
     title: Contábil Cabeçalho Lançamento Contábil
     meta:
       - versao: "__COMMIT_SHA__"

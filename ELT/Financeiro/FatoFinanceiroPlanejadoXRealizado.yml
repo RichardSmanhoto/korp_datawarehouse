@@ -1,6 +1,6 @@
 cubes:
   - name: FatoFinanceiroPlanejadoXRealizado
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoFinanceiroPlanejadoXRealizado`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoFinanceiroPlanejadoXRealizado`"
     title: Financeiro Planejado x Realizado
     
     meta:

@@ -1,6 +1,6 @@
 cubes:
   - name: FinanceiroTipoDocumento
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroTipoDocumento`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroTipoDocumento`"
     title: Financeiro Tipo Documento
     meta:
       - versao: "__COMMIT_SHA__"

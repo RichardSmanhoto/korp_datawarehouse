@@ -1,6 +1,6 @@
 cubes:
   - name: FatoCompraItemNotaRateioPedido
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoCompraItemNotaRateioPedido`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoCompraItemNotaRateioPedido`"
     title: Compra Item da Nota - Rateio - Pedido
     
     meta:

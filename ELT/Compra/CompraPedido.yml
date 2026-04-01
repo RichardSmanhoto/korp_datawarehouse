@@ -1,7 +1,7 @@
 cubes:
 
   - name: CompraPedido
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_CompraPedido`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CompraPedido`"
     title: Compra Pedido
     meta:
       - versao: "__COMMIT_SHA__"

@@ -1,6 +1,6 @@
 cubes:
   - name: ContabilModeloDre
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_ContabilModeloDre`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_ContabilModeloDre`"
     title: Contábil Modelo DRE
     meta:
       - versao: "__COMMIT_SHA__"

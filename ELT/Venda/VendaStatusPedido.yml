@@ -1,6 +1,6 @@
 cubes:
   - name: VendaStatusPedido
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaStatusPedido`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaStatusPedido`"
     title: Venda Status Pedido
 
     meta:

@@ -1,7 +1,7 @@
 cubes:
 
   - name: FaturamentoStatusNotaFiscal
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FaturamentoStatusNotaFiscal`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FaturamentoStatusNotaFiscal`"
     title: Faturamento Status Nota Fiscal
     meta:
       - versao: "__COMMIT_SHA__"

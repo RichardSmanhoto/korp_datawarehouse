@@ -1,6 +1,6 @@
 cubes:
   - name: FiscalNCM
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FiscalNCM`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FiscalNCM`"
     title: Fiscal NCM
     meta:
       - versao: "__COMMIT_SHA__"

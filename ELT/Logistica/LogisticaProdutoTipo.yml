@@ -1,6 +1,6 @@
 cubes:
   - name: LogisticaProdutoTipo
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_LogisticaProdutoTipo`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_LogisticaProdutoTipo`"
     title: Logística Tipo Produto
 
     meta:
