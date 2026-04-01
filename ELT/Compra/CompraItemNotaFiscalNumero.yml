@@ -1,7 +1,7 @@
 cubes:
 
   - name: CompraItemNotaFiscalNumero
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_CompraItemNotaFiscalNumero`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CompraItemNotaFiscalNumero`"
     title: Compra Número Nota Fiscal
     meta:
       - versao: "__COMMIT_SHA__"

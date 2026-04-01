@@ -1,6 +1,6 @@
 cubes:
   - name: FatoLogisticaMovimentacaoLocal
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoLogisticaMovimentacaoLocal`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoLogisticaMovimentacaoLocal`"
     title: Logística Movimentação Local
     
     meta:

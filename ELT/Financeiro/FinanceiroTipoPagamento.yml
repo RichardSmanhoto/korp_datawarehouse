@@ -1,6 +1,6 @@
 cubes:
   - name: FinanceiroTipoPagamento
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroTipoPagamento`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FinanceiroTipoPagamento`"
     title: Financeiro Tipo Pagamento
     meta:
       - versao: "__COMMIT_SHA__"

@@ -1,6 +1,6 @@
 cubes:
   - name: LogisticaMovimentacaoEfetivada
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.schema}`.`{COMPILE_CONTEXT.securityContext.schema}_LogisticaMovimentacaoEfetivada`"
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_LogisticaMovimentacaoEfetivada`"
     title: Logística Movimentação Efetivada
     meta:
       - versao: "__COMMIT_SHA__"
