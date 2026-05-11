@@ -168,62 +168,62 @@ cubes:
         primary_key: true
 
       - name: codigo
-        title: Codigo
+        title: Código
         sql: codigo
         type: string
 
       - name: razaoSocial
-        title: RazaoSocial
+        title: Razão Social
         sql: razaoSocial
         type: string
 
       - name: codigoSegmento
-        title: CodigoSegmento
+        title: Cód. Segmento
         sql: codigoSegmento
         type: string
 
       - name: descricaoSegmento
-        title: DescricaoSegmento
+        title: Segmento
         sql: descricaoSegmento
         type: string
 
       - name: codigoClasse
-        title: CodigoClasse
+        title: Cód. Classe
         sql: codigoClasse
         type: string
 
       - name: descricaoClasse
-        title: DescricaoClasse
+        title: Classe
         sql: descricaoClasse
         type: string
 
       - name: codigoPais
-        title: CodigoPais
+        title: Cód. País
         sql: codigoPais
         type: number
 
       - name: descricaoPais
-        title: DescricaoPais
+        title: País
         sql: descricaoPais
         type: string
 
       - name: codigoEstado
-        title: CodigoEstado
+        title: Cód. Estado
         sql: codigoEstado
         type: string
 
       - name: descricaoEstado
-        title: DescricaoEstado
+        title: Estado
         sql: descricaoEstado
         type: string
 
       - name: codigoCidade
-        title: CodigoCidade
+        title: Cód. Cidade
         sql: codigoCidade
         type: string
 
       - name: descricaoCidade
-        title: DescricaoCidade
+        title: Cidade
         sql: descricaoCidade
         type: string
 
@@ -233,22 +233,22 @@ cubes:
         type: string
 
       - name: idCadastroCliente
-        title: IdCadastroCliente
+        title: Id Cadastro Cliente
         sql: idCadastroCliente
         type: number
 
       - name: agenciaBancaria
-        title: AgenciaBancaria
+        title: Agência Bancária
         sql: agenciaBancaria
         type: string
 
       - name: asnCodLocalDestino
-        title: AsnCodLocalDestino
+        title: Asn Cód Local Destino
         sql: asnCodLocalDestino
         type: string
 
       - name: avisoEmbarque
-        title: AvisoEmbarque
+        title: Aviso Embarque
         sql: avisoEmbarque
         type: string
 
@@ -258,7 +258,7 @@ cubes:
         type: string
 
       - name: bairroPagamento
-        title: BairroPagamento
+        title: Bairro Pagamento
         sql: bairroPagamento
         type: string
 
@@ -268,32 +268,32 @@ cubes:
         type: string
 
       - name: barrarFaturamento
-        title: BarrarFaturamento
+        title: Barrar Faturamento
         sql: barrarFaturamento
         type: string
 
       - name: celula
-        title: Celula
+        title: Célula
         sql: celula
         type: string
 
       - name: cep
-        title: Cep
+        title: CEP
         sql: cep
         type: string
 
       - name: cepPagamento
-        title: CepPagamento
+        title: Cep Pagamento
         sql: cepPagamento
         type: string
 
       - name: cfo
-        title: Cfo
+        title: CFO
         sql: cfo
         type: string
 
       - name: cnpjTransportadora
-        title: CnpjTransportadora
+        title: CNPJ Transportadora
         sql: cnpjTransportadora
         type: string
 
@@ -303,22 +303,22 @@ cubes:
         type: string
 
       - name: cidadeFrete
-        title: CidadeFrete
+        title: Cidade Frete
         sql: cidadeFrete
         type: string
 
       - name: cidadepgto
-        title: Cidadepgto
+        title: Cidade Pgto
         sql: cidadepgto
         type: string
 
       - name: cliDesde
-        title: CliDesde
+        title: Cliente Desde
         sql: cliDesde
         type: string
 
       - name: clien
-        title: Clien
+        title: Cliente
         sql: clien
         type: string
 
@@ -328,7 +328,7 @@ cubes:
         type: string
 
       - name: condPgto
-        title: CondPgto
+        title: Condição Pgto
         sql: condPgto
         type: number
 
@@ -343,17 +343,17 @@ cubes:
         type: string
 
       - name: creditoCliente
-        title: CreditoCliente
+        title: Crédito Cliente
         sql: creditoCliente
         type: number
 
       - name: ctIrRt
-        title: CtIrRt
+        title: Ct Ir Rt
         sql: ctIrRt
         type: number
 
       - name: ctIrrfRt
-        title: CtIrrfRt
+        title: Ct Irrf Rt
         sql: ctIrrfRt
         type: number
 
@@ -368,12 +368,12 @@ cubes:
         type: string
 
       - name: destacarIss
-        title: DestacarIss
+        title: Destacar ISS
         sql: destacarIss
         type: string
 
       - name: diasInad
-        title: DiasInad
+        title: Dias Inad
         sql: diasInad
         type: number
 
@@ -383,32 +383,32 @@ cubes:
         type: string
 
       - name: dolar
-        title: Dolar
+        title: Dólar
         sql: dolar
         type: string
 
       - name: ediCodigo
-        title: EdiCodigo
+        title: Edi Código
         sql: ediCodigo
         type: string
 
       - name: ediUcPre
-        title: EdiUcPre
+        title: Edi Uc Pre
         sql: ediUcPre
         type: string
 
       - name: ediUcSuf
-        title: EdiUcSuf
+        title: Edi Uc Suf
         sql: ediUcSuf
         type: string
 
       - name: ediUmPre
-        title: EdiUmPre
+        title: Edi Um Pre
         sql: ediUmPre
         type: string
 
       - name: ediUmSuf
-        title: EdiUmSuf
+        title: Edi Um Suf
         sql: ediUmSuf
         type: string
 
@@ -418,97 +418,97 @@ cubes:
         type: string
 
       - name: enderecoTransportadora
-        title: EnderecoTransportadora
+        title: Endereço Transportadora
         sql: enderecoTransportadora
         type: string
 
       - name: endereco
-        title: Endereco
+        title: Endereço
         sql: endereco
         type: string
 
       - name: estadoTransportadora
-        title: EstadoTransportadora
+        title: Estado Transportadora
         sql: estadoTransportadora
         type: string
 
       - name: estadoPagamento
-        title: EstadoPagamento
+        title: Estado Pagamento
         sql: estadoPagamento
         type: string
 
       - name: tipoFrete
-        title: TipoFrete
+        title: Tipo Frete
         sql: tipoFrete
         type: string
 
       - name: numero
-        title: Numero
+        title: Número
         sql: numero
         type: string
 
       - name: icm
-        title: Icm
+        title: ICM
         sql: icm
         type: number
 
       - name: inscricaoEstadual
-        title: InscricaoEstadual
+        title: Inscrição Estadual
         sql: inscricaoEstadual
         type: string
 
       - name: inscTran
-        title: InscTran
+        title: Inscrição Transportadora
         sql: inscTran
         type: string
 
       - name: ir
-        title: Ir
+        title: IR
         sql: ir
         type: number
 
       - name: irrf
-        title: Irrf
+        title: IRRF
         sql: irrf
         type: number
 
       - name: limiteCredito
-        title: LimiteCredito
+        title: Limite Crédito
         sql: limiteCredito
         type: number
 
       - name: munTran
-        title: MunTran
+        title: Município Transportadora
         sql: munTran
         type: string
 
       - name: caminhoArquivoXmlNFe
-        title: CaminhoArquivoXmlNFe
+        title: Caminho Arquivo XML NFe
         sql: caminhoArquivoXmlNFe
         type: string
 
       - name: emailNotaFiscalEletronica
-        title: EmailNotaFiscalEletronica
+        title: Email Nota Fiscal Eletrônica
         sql: emailNotaFiscalEletronica
         type: string
 
       - name: observacao
-        title: Observacao
+        title: Observação
         sql: observacao
         type: string
 
       - name: perRed
-        title: PerRed
+        title: Percentual Redução
         sql: perRed
         type: number
 
       - name: perciss
-        title: Perciss
+        title: Percentual ISS
         sql: perciss
         type: number
 
       - name: percom
-        title: Percom
+        title: Percentual Comissão
         sql: percom
         type: number
 
@@ -533,177 +533,177 @@ cubes:
         type: string
 
       - name: telefonePrincipal
-        title: TelefonePrincipal
+        title: Telefone Principal
         sql: telefonePrincipal
         type: string
 
       - name: telefoneSecundario
-        title: TelefoneSecundario
+        title: Telefone Secundário
         sql: telefoneSecundario
         type: string
 
       - name: faxPrincipal
-        title: FaxPrincipal
+        title: Fax Principal
         sql: faxPrincipal
         type: string
 
       - name: faxSecundario
-        title: FaxSecundario
+        title: Fax Secundário
         sql: faxSecundario
         type: string
 
       - name: tipoCliente
-        title: TipoCliente
+        title: Tipo Cliente
         sql: tipoCliente
         type: number
 
       - name: tolerancia
-        title: Tolerancia
+        title: Tolerância
         sql: tolerancia
         type: number
 
       - name: txf
-        title: Txf
+        title: TXF
         sql: txf
         type: number
 
       - name: wfi
-        title: Wfi
+        title: WFI
         sql: wfi
         type: string
 
       - name: simplesNacional
-        title: SimplesNacional
+        title: Simples Nacional
         sql: simplesNacional
         type: string
 
       - name: inscricaoMunicipal
-        title: InscricaoMunicipal
+        title: Inscrição Municipal
         sql: inscricaoMunicipal
         type: string
 
       - name: numeroEnderecoPgto
-        title: NumeroEnderecoPgto
+        title: Número Endereço Pgto
         sql: numeroEnderecoPgto
         type: string
 
       - name: centroCusto
-        title: CentroCusto
+        title: Centro Custo
         sql: centroCusto
         type: string
 
       - name: contribuinteICMS
-        title: ContribuinteICMS
+        title: Contribuinte ICMS
         sql: contribuinteICMS
         type: string
 
       - name: condi
-        title: Condi
+        title: Condição
         sql: condi
         type: string
 
       - name: consumidorFinal
-        title: ConsumidorFinal
+        title: Consumidor Final
         sql: consumidorFinal
         type: string
 
       - name: icmsSt
-        title: IcmsSt
+        title: ICMS ST
         sql: icmsSt
         type: string
 
       - name: icmsSuframa
-        title: IcmsSuframa
+        title: ICMS Suframa
         sql: icmsSuframa
         type: string
 
       - name: ipiSuframa
-        title: IpiSuframa
+        title: IPI Suframa
         sql: ipiSuframa
         type: string
 
       - name: enderecoPgto
-        title: EnderecoPgto
+        title: Endereço Pgto
         sql: enderecoPgto
         type: string
 
       - name: envioAutomaticoBoleto
-        title: EnvioAutomaticoBoleto
+        title: Envio Automático Boleto
         sql: envioAutomaticoBoleto
         type: string
 
       - name: pisCofinsSuframa
-        title: PisCofinsSuframa
+        title: PIS COFINS Suframa
         sql: pisCofinsSuframa
         type: string
 
       - name: emailCobranca
-        title: EmailCobranca
+        title: Email Cobrança
         sql: emailCobranca
         type: string
 
       - name: enviarPedidoBlocoZbNfe
-        title: EnviarPedidoBlocoZbNfe
+        title: Enviar Pedido Bloco Zb NFE
         sql: enviarPedidoBlocoZbNfe
         type: string
 
       - name: codigoSuframa
-        title: CodigoSuframa
+        title: Código Suframa
         sql: codigoSuframa
         type: string
 
       - name: descontarPisCofinsTotal
-        title: DescontarPisCofinsTotal
+        title: Descontar PIS COFINS Total
         sql: descontarPisCofinsTotal
         type: string
 
       - name: descontoExtraPercentual
-        title: DescontoExtraPercentual
+        title: Desconto Extra Percentual
         sql: descontoExtraPercentual
         type: number
 
       - name: dataHoraAlteracao
-        title: DataHoraAlteracao
+        title: Data Hora Alteracao
         sql: dataHoraAlteracao
         type: time
 
       - name: retemFunrural
-        title: RetemFunrural
+        title: Retem Funrural
         sql: retemFunrural
         type: string
 
       - name: aliquotaCpp
-        title: AliquotaCpp
+        title: Aliquota CPP
         sql: aliquotaCpp
         type: number
 
       - name: aliquotaRat
-        title: AliquotaRat
+        title: Aliquota RAT
         sql: aliquotaRat
         type: number
 
       - name: aliquotaSenar
-        title: AliquotaSenar
+        title: Aliquota SENAR
         sql: aliquotaSenar
         type: number
 
       - name: dataValidacao
-        title: DataValidacao
+        title: Data Validacao
         sql: dataValidacao
         type: string
 
       - name: usarEnderecoPadrao
-        title: UsarEnderecoPadrao
+        title: Usar Endereço Padrao
         sql: usarEnderecoPadrao
         type: string
 
       - name: dataNascimento
-        title: DataNascimento
+        title: Data Nascimento
         sql: dataNascimento
         type: string
 
       - name: entidadeExecutoraPaa
-        title: EntidadeExecutoraPaa
+        title: Entidade Executora PAA
         sql: entidadeExecutoraPaa
         type: number
 
@@ -713,117 +713,117 @@ cubes:
         type: string
 
       - name: diaFatura
-        title: DiaFatura
+        title: Dia Fatura
         sql: diaFatura
         type: number
 
       - name: idBancos
-        title: IdBancos
+        title: Id Bancos
         sql: idBancos
         type: string
 
       - name: produtorRural
-        title: ProdutorRural
+        title: Produtor Rural
         sql: produtorRural
         type: string
 
       - name: codigoCnaePrincipal
-        title: CodigoCnaePrincipal
+        title: Código CNAE Principal
         sql: codigoCnaePrincipal
         type: string
 
       - name: pontoReferencia
-        title: PontoReferencia
+        title: Ponto Referencia
         sql: pontoReferencia
         type: string
 
       - name: nFuncionarios
-        title: NFuncionarios
+        title: Nº Funcionários
         sql: nFuncionarios
         type: number
 
       - name: capitalSocial
-        title: CapitalSocial
+        title: Capital Social
         sql: capitalSocial
         type: number
 
       - name: dataAbertura
-        title: DataAbertura
+        title: Data Abertura
         sql: dataAbertura
         type: string
 
       - name: naturezaJuridica
-        title: NaturezaJuridica
+        title: Natureza Jurídica
         sql: naturezaJuridica
         type: string
 
       - name: situacaoCadastral
-        title: SituacaoCadastral
+        title: Situação Cadastral
         sql: situacaoCadastral
         type: string
 
       - name: porteEmpresa
-        title: PorteEmpresa
+        title: Porte Empresa
         sql: porteEmpresa
         type: string
 
       - name: dataSituacaoCadastral
-        title: DataSituacaoCadastral
+        title: Data Situação Cadastral
         sql: dataSituacaoCadastral
         type: string
 
       - name: descricaoCnaePrincipal
-        title: DescricaoCnaePrincipal
+        title: Descrição CNAE Principal
         sql: descricaoCnaePrincipal
         type: string
 
       - name: registroGeral
-        title: RegistroGeral
+        title: Registro Geral
         sql: registroGeral
         type: string
 
       - name: observacaoGeral
-        title: ObservacaoGeral
+        title: Observação Geral
         sql: observacaoGeral
         type: string
 
       - name: observacaoFaturamento
-        title: ObservacaoFaturamento
+        title: Observação Faturamento
         sql: observacaoFaturamento
         type: string
 
       - name: observacaoFinanceiro
-        title: ObservacaoFinanceiro
+        title: Observação Financeiro
         sql: observacaoFinanceiro
         type: string
 
       - name: observacaoVendas
-        title: ObservacaoVendas
+        title: Observação Vendas
         sql: observacaoVendas
         type: string
 
       - name: observacaoOutrosEnderecos
-        title: ObservacaoOutrosEnderecos
+        title: Observação Outros Endereços
         sql: observacaoOutrosEnderecos
         type: string
 
       - name: observacaoContatos
-        title: ObservacaoContatos
+        title: Observação Contatos
         sql: observacaoContatos
         type: string
 
       - name: observacaoContasRelacionadas
-        title: ObservacaoContasRelacionadas
+        title: Observação Contas Relacionadas
         sql: observacaoContasRelacionadas
         type: string
 
       - name: referencias
-        title: Referencias
+        title: Referências
         sql: referencias
         type: string
 
       - name: pickingRealizarConferencia
-        title: PickingRealizarConferencia
+        title: Picking Realizar Conferência
         sql: pickingRealizarConferencia
         type: string
 
@@ -833,61 +833,61 @@ cubes:
         type: string
 
       - name: naoCalculaDifal
-        title: NaoCalculaDifal
+        title: Não Calcula DIFAL
         sql: naoCalculaDifal
         type: string
 
       - name: limiteCreditoGrupoEmpresarial
-        title: LimiteCreditoGrupoEmpresarial
+        title: Limite Crédito Grupo Empresarial
         sql: limiteCreditoGrupoEmpresarial
         type: number
 
       - name: diasInadGrupoEmpresarial
-        title: DiasInadGrupoEmpresarial
+        title: Dias Inad Grupo Empresarial
         sql: diasInadGrupoEmpresarial
         type: number
 
       - name: icmsStSuframa
-        title: IcmsStSuframa
+        title: ICMS ST Suframa
         sql: icmsStSuframa
         type: string
 
       - name: indOpcCp
-        title: IndOpcCp
+        title: Ind Opc Cp
         sql: indOpcCp
         type: string
 
       - name: valorSaldoFlex
-        title: ValorSaldoFlex
+        title: Valor Saldo Flex
         sql: valorSaldoFlex
         type: number
 
       - name: envioAutomaticoBoletoUnicoEmail
-        title: EnvioAutomaticoBoletoUnicoEmail
+        title: Envio Automático Boleto Único Email
         sql: envioAutomaticoBoletoUnicoEmail
         type: string
 
       - name: bloquearRestricaoCredito
-        title: BloquearRestricaoCredito
+        title: Bloquear Restrição Crédito
         sql: bloquearRestricaoCredito
         type: string
 
       - name: codContaContabilPassivo
-        title: CodContaContabilPassivo
+        title: Cód Conta Contábil Passivo
         sql: codContaContabilPassivo
         type: number
 
       - name: indNatRet
-        title: IndNatRet
+        title: Ind Nat Ret
         sql: indNatRet
         type: string
 
       - name: cupomFiscal
-        title: CupomFiscal
+        title: Cupom Fiscal
         sql: cupomFiscal
         type: string
 
       - name: nif
-        title: Nif
+        title: NIF
         sql: nif
         type: string
