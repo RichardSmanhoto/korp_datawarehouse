@@ -114,6 +114,7 @@ cubes:
         sql: CODIGO
         type: string
         primary_key: true
+        public: true
       
       - name: complemento
         title: Complemento
