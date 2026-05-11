@@ -1,7 +1,157 @@
 cubes:
   - name: VendaCliente
-    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaCliente`"
-    title: Venda Cliente
+    title: Vendas Clientes
+    sql: |
+      SELECT
+        vc.Id AS id,
+        vc.Codigo AS codigo,
+        vc.RazaoSocial AS razaoSocial,
+        vc.CodigoSegmento AS codigoSegmento,
+        vc.DescricaoSegmento AS descricaoSegmento,
+        vc.CodigoClasse AS codigoClasse,
+        vc.DescricaoClasse AS descricaoClasse,
+        vc.CodigoPais AS codigoPais,
+        vc.DescricaoPais AS descricaoPais,
+        vc.CodigoEstado AS codigoEstado,
+        vc.DescricaoEstado AS descricaoEstado,
+        vc.CodigoCidade AS codigoCidade,
+        vc.DescricaoCidade AS descricaoCidade,
+        vc.CGC AS CGC,
+        cc.R_E_C_N_O_ AS idCadastroCliente,
+        cc.AGENCIA AS agenciaBancaria,
+        cc.ASN_COD_LOCAL_DESTINO AS asnCodLocalDestino,
+        cc.AVISO_EMBARQUE AS avisoEmbarque,
+        cc.BAIRRO AS bairro,
+        cc.BAIRROPGTO AS bairroPagamento,
+        cc.BANCO AS banco,
+        cc.BARRAR_FATURA AS barrarFaturamento,
+        cc.CELULA AS celula,
+        cc.CEP AS cep,
+        cc.CEPPGTO AS cepPagamento,
+        cc.CFO AS cfo,
+        cc.CGC_TRAN AS cnpjTransportadora,
+        cc.CIDADE AS cidade,
+        cc.CIDADEFRETE AS cidadeFrete,
+        cc.CIDADEPGTO AS cidadepgto,
+        cc.CLI_DESDE AS cliDesde,
+        cc.CLIEN AS clien,
+        cc.COMPLEMENTO AS complemento,
+        cc.COND_PGTO AS condPgto,
+        cc.CONTA AS conta,
+        cc.CONTATO AS contato,
+        cc.CREDITO_CLIENTE AS creditoCliente,
+        cc.CT_IR_RT AS ctIrRt,
+        cc.CT_IRRF_RT AS ctIrrfRt,
+        cc.CUSTOFIN AS custofin,
+        cc.DATA AS data,
+        cc.DESTACAR_ISS AS destacarIss,
+        cc.DIAS_INAD AS diasInad,
+        cc.DOCA AS doca,
+        cc.DOLAR AS dolar,
+        cc.EDI_CODIGO AS ediCodigo,
+        cc.EDI_UC_PRE AS ediUcPre,
+        cc.EDI_UC_SUF AS ediUcSuf,
+        cc.EDI_UM_PRE AS ediUmPre,
+        cc.EDI_UM_SUF AS ediUmSuf,
+        cc.EMAIL AS email,
+        cc.END_TRAN AS enderecoTransportadora,
+        cc.ENDERECO AS endereco,
+        cc.EST_TRAN AS estadoTransportadora,
+        cc.ESTADOPGTO AS estadoPagamento,
+        cc.FRETE AS tipoFrete,
+        cc.IBGE_LOGRADOURO AS numero,
+        cc.ICM AS icm,
+        cc.INSC AS inscricaoEstadual,
+        cc.INSC_TRAN AS inscTran,
+        cc.IR AS ir,
+        cc.IRRF AS irrf,
+        cc.LIMITE_CRED AS limiteCredito,
+        cc.MUN_TRAN AS munTran,
+        cc.NFE_CAMINHOXMLDESTINATARIO AS caminhoArquivoXmlNFe,
+        cc.NFE_EMAIL AS emailNotaFiscalEletronica,
+        cc.OBS AS observacao,
+        cc.PER_RED AS perRed,
+        cc.PERCISS AS perciss,
+        cc.PERCOM AS percom,
+        cc.PLANEJADOR AS planejador,
+        cc.RESUMO AS resumo,
+        cc.SITE AS site,
+        cc.SUFRAMA AS suframa,
+        cc.TEL1 AS telefonePrincipal,
+        cc.TEL2 AS telefoneSecundario,
+        cc.TELEX AS faxPrincipal,
+        cc.TELEX2 AS faxSecundario,
+        cc.TIPO_CLIENTE AS tipoCliente,
+        cc.TOLERANCIA AS tolerancia,
+        cc.TXF AS txf,
+        cc.WFI AS wfi,
+        cc.SIMPLES_NACIONAL AS simplesNacional,
+        cc.INSCRICAO_MUNICIPAL AS inscricaoMunicipal,
+        cc.NUMERO_ENDPGTO AS numeroEnderecoPgto,
+        cc.GRUPO AS centroCusto,
+        cc.CONTRIBUINTE_ICMS AS contribuinteICMS,
+        cc.CONDI AS condi,
+        cc.CONSUMIDOR_FINAL AS consumidorFinal,
+        cc.ICMS_ST AS icmsSt,
+        cc.ICMS_SUFRAMA AS icmsSuframa,
+        cc.IPI_SUFRAMA AS ipiSuframa,
+        cc.LOCAL AS enderecoPgto,
+        cc.ENVIO_AUTOMATICO_BOLETO AS envioAutomaticoBoleto,
+        cc.PIS_COFINS_SUFRAMA AS pisCofinsSuframa,
+        cc.EMAIL_COBRANCA AS emailCobranca,
+        cc.ENVIAR_PEDIDO_BLOCO_ZB_NFE AS enviarPedidoBlocoZbNfe,
+        cc.COD_SUFRAMA AS codigoSuframa,
+        cc.DESCONTAR_PIS_COFINS_TOTAL AS descontarPisCofinsTotal,
+        cc.DESCONTO_EXTRA_PERC AS descontoExtraPercentual,
+        cc.DATAHORA_ALTERACAO AS dataHoraAlteracao,
+        cc.CT_RETEM_FUNRURAL AS retemFunrural,
+        cc.CT_CPP AS aliquotaCpp,
+        cc.CT_RAT AS aliquotaRat,
+        cc.CT_SENAR AS aliquotaSenar,
+        cc.DATA_VALIDACAO AS dataValidacao,
+        cc.CST_USAR_ENDERECO_PADRAO AS usarEnderecoPadrao,
+        cc.DATA_NASCIMENTO AS dataNascimento,
+        cc.ENTIDADE_EXECUTORA_PAA AS entidadeExecutoraPaa,
+        cc.PRACA AS praca,
+        cc.DIA_FATURA AS diaFatura,
+        cc.ID_BANCOS AS idBancos,
+        cc.PRODUTOR_RURAL AS produtorRural,
+        cc.CODIGO_CNAE_PRINCIPAL AS codigoCnaePrincipal,
+        cc.PONTO_REFERENCIA AS pontoReferencia,
+        cc.N_FUNCIONARIOS AS nFuncionarios,
+        cc.CAPITAL_SOCIAL AS capitalSocial,
+        cc.DATA_ABERTURA AS dataAbertura,
+        cc.NATUREZA_JURIDICA AS naturezaJuridica,
+        cc.SITUACAO_CADASTRAL AS situacaoCadastral,
+        cc.PORTE_EMPRESA AS porteEmpresa,
+        cc.DATA_SITUACAO_CADASTRAL AS dataSituacaoCadastral,
+        cc.DESCRICAO_CNAE_PRINCIPAL AS descricaoCnaePrincipal,
+        cc.REGISTRO_GERAL AS registroGeral,
+        cc.OBS_GERAL AS observacaoGeral,
+        cc.OBS_FATURAMENTO AS observacaoFaturamento,
+        cc.OBS_FINANCEIRO AS observacaoFinanceiro,
+        cc.OBS_VENDAS AS observacaoVendas,
+        cc.OBS_OUTROS_ENDERECOS AS observacaoOutrosEnderecos,
+        cc.OBS_CONTATOS AS observacaoContatos,
+        cc.OBS_CONTAS_RELACIONADAS AS observacaoContasRelacionadas,
+        cc.REFERENCIAS AS referencias,
+        cc.PICKING_REALIZAR_CONFERENCIA AS pickingRealizarConferencia,
+        cc.DOCUMENTO AS documento,
+        cc.NAO_CALCULA_DIFAL AS naoCalculaDifal,
+        cc.LIMITE_CRED_GRUPO_EMPRESARIAL AS limiteCreditoGrupoEmpresarial,
+        cc.DIAS_INAD_GRUPO_EMPRESARIAL AS diasInadGrupoEmpresarial,
+        cc.ICMS_ST_SUFRAMA AS icmsStSuframa,
+        cc.IND_OPC_CP AS indOpcCp,
+        cc.VALOR_SALDO_FLEX AS valorSaldoFlex,
+        cc.ENVIO_AUTOMATICO_BOLETO_UNICO_EMAIL AS envioAutomaticoBoletoUnicoEmail,
+        cc.BLOQUEAR_RESTRICAO_CREDITO AS bloquearRestricaoCredito,
+        cc.CONTA_CONTABIL_PASSIVO AS codContaContabilPassivo,
+        cc.IND_NAT_RET AS indNatRet,
+        cc.CUPOM_FISCAL AS cupomFiscal,
+        cc.NIF AS nif
+      FROM `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaCliente` vc
+      LEFT JOIN `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CLIENTES` cc
+        ON vc.Codigo = cc.CODIGO
 
     meta:
       - versao: "__COMMIT_SHA__"
@@ -12,72 +162,732 @@ cubes:
 
     dimensions:
       - name: id
-        sql: Id
+        title: Id
+        sql: id
         type: number
         primary_key: true
-        title: Id
 
       - name: codigo
-        sql: Codigo
+        title: Codigo
+        sql: codigo
         type: string
-        title: Código
 
       - name: razaoSocial
-        sql: RazaoSocial
+        title: RazaoSocial
+        sql: razaoSocial
         type: string
-        title: Razão Social
 
       - name: codigoSegmento
-        sql: CodigoSegmento
+        title: CodigoSegmento
+        sql: codigoSegmento
         type: string
-        title: Cód. Segmento
 
       - name: descricaoSegmento
-        sql: DescricaoSegmento
+        title: DescricaoSegmento
+        sql: descricaoSegmento
         type: string
-        title: Segmento
 
       - name: codigoClasse
-        sql: CodigoClasse
+        title: CodigoClasse
+        sql: codigoClasse
         type: string
-        title: Cód. Classe
 
       - name: descricaoClasse
-        sql: DescricaoClasse
+        title: DescricaoClasse
+        sql: descricaoClasse
         type: string
-        title: Classe
 
       - name: codigoPais
-        sql: CodigoPais
+        title: CodigoPais
+        sql: codigoPais
         type: number
-        title: Cód. País
 
       - name: descricaoPais
-        sql: DescricaoPais
+        title: DescricaoPais
+        sql: descricaoPais
         type: string
-        title: País
 
       - name: codigoEstado
-        sql: CodigoEstado
+        title: CodigoEstado
+        sql: codigoEstado
         type: string
-        title: Cód. Estado
 
       - name: descricaoEstado
-        sql: DescricaoEstado
+        title: DescricaoEstado
+        sql: descricaoEstado
         type: string
-        title: Estado
 
       - name: codigoCidade
-        sql: CodigoCidade
+        title: CodigoCidade
+        sql: codigoCidade
         type: string
-        title: Cód. Cidade
 
       - name: descricaoCidade
-        sql: DescricaoCidade
+        title: DescricaoCidade
+        sql: descricaoCidade
         type: string
-        title: Cidade
 
       - name: CGC
+        title: CGC
         sql: CGC
         type: string
-        title: CGC
+
+      - name: idCadastroCliente
+        title: IdCadastroCliente
+        sql: idCadastroCliente
+        type: number
+
+      - name: agenciaBancaria
+        title: AgenciaBancaria
+        sql: agenciaBancaria
+        type: string
+
+      - name: asnCodLocalDestino
+        title: AsnCodLocalDestino
+        sql: asnCodLocalDestino
+        type: string
+
+      - name: avisoEmbarque
+        title: AvisoEmbarque
+        sql: avisoEmbarque
+        type: string
+
+      - name: bairro
+        title: Bairro
+        sql: bairro
+        type: string
+
+      - name: bairroPagamento
+        title: BairroPagamento
+        sql: bairroPagamento
+        type: string
+
+      - name: banco
+        title: Banco
+        sql: banco
+        type: string
+
+      - name: barrarFaturamento
+        title: BarrarFaturamento
+        sql: barrarFaturamento
+        type: string
+
+      - name: celula
+        title: Celula
+        sql: celula
+        type: string
+
+      - name: cep
+        title: Cep
+        sql: cep
+        type: string
+
+      - name: cepPagamento
+        title: CepPagamento
+        sql: cepPagamento
+        type: string
+
+      - name: cfo
+        title: Cfo
+        sql: cfo
+        type: string
+
+      - name: cnpjTransportadora
+        title: CnpjTransportadora
+        sql: cnpjTransportadora
+        type: string
+
+      - name: cidade
+        title: Cidade
+        sql: cidade
+        type: string
+
+      - name: cidadeFrete
+        title: CidadeFrete
+        sql: cidadeFrete
+        type: string
+
+      - name: cidadepgto
+        title: Cidadepgto
+        sql: cidadepgto
+        type: string
+
+      - name: cliDesde
+        title: CliDesde
+        sql: cliDesde
+        type: string
+
+      - name: clien
+        title: Clien
+        sql: clien
+        type: string
+
+      - name: complemento
+        title: Complemento
+        sql: complemento
+        type: string
+
+      - name: condPgto
+        title: CondPgto
+        sql: condPgto
+        type: number
+
+      - name: conta
+        title: Conta
+        sql: conta
+        type: string
+
+      - name: contato
+        title: Contato
+        sql: contato
+        type: string
+
+      - name: creditoCliente
+        title: CreditoCliente
+        sql: creditoCliente
+        type: number
+
+      - name: ctIrRt
+        title: CtIrRt
+        sql: ctIrRt
+        type: number
+
+      - name: ctIrrfRt
+        title: CtIrrfRt
+        sql: ctIrrfRt
+        type: number
+
+      - name: custofin
+        title: Custofin
+        sql: custofin
+        type: number
+
+      - name: data
+        title: Data
+        sql: data
+        type: string
+
+      - name: destacarIss
+        title: DestacarIss
+        sql: destacarIss
+        type: string
+
+      - name: diasInad
+        title: DiasInad
+        sql: diasInad
+        type: number
+
+      - name: doca
+        title: Doca
+        sql: doca
+        type: string
+
+      - name: dolar
+        title: Dolar
+        sql: dolar
+        type: string
+
+      - name: ediCodigo
+        title: EdiCodigo
+        sql: ediCodigo
+        type: string
+
+      - name: ediUcPre
+        title: EdiUcPre
+        sql: ediUcPre
+        type: string
+
+      - name: ediUcSuf
+        title: EdiUcSuf
+        sql: ediUcSuf
+        type: string
+
+      - name: ediUmPre
+        title: EdiUmPre
+        sql: ediUmPre
+        type: string
+
+      - name: ediUmSuf
+        title: EdiUmSuf
+        sql: ediUmSuf
+        type: string
+
+      - name: email
+        title: Email
+        sql: email
+        type: string
+
+      - name: enderecoTransportadora
+        title: EnderecoTransportadora
+        sql: enderecoTransportadora
+        type: string
+
+      - name: endereco
+        title: Endereco
+        sql: endereco
+        type: string
+
+      - name: estadoTransportadora
+        title: EstadoTransportadora
+        sql: estadoTransportadora
+        type: string
+
+      - name: estadoPagamento
+        title: EstadoPagamento
+        sql: estadoPagamento
+        type: string
+
+      - name: tipoFrete
+        title: TipoFrete
+        sql: tipoFrete
+        type: string
+
+      - name: numero
+        title: Numero
+        sql: numero
+        type: string
+
+      - name: icm
+        title: Icm
+        sql: icm
+        type: number
+
+      - name: inscricaoEstadual
+        title: InscricaoEstadual
+        sql: inscricaoEstadual
+        type: string
+
+      - name: inscTran
+        title: InscTran
+        sql: inscTran
+        type: string
+
+      - name: ir
+        title: Ir
+        sql: ir
+        type: number
+
+      - name: irrf
+        title: Irrf
+        sql: irrf
+        type: number
+
+      - name: limiteCredito
+        title: LimiteCredito
+        sql: limiteCredito
+        type: number
+
+      - name: munTran
+        title: MunTran
+        sql: munTran
+        type: string
+
+      - name: caminhoArquivoXmlNFe
+        title: CaminhoArquivoXmlNFe
+        sql: caminhoArquivoXmlNFe
+        type: string
+
+      - name: emailNotaFiscalEletronica
+        title: EmailNotaFiscalEletronica
+        sql: emailNotaFiscalEletronica
+        type: string
+
+      - name: observacao
+        title: Observacao
+        sql: observacao
+        type: string
+
+      - name: perRed
+        title: PerRed
+        sql: perRed
+        type: number
+
+      - name: perciss
+        title: Perciss
+        sql: perciss
+        type: number
+
+      - name: percom
+        title: Percom
+        sql: percom
+        type: number
+
+      - name: planejador
+        title: Planejador
+        sql: planejador
+        type: string
+
+      - name: resumo
+        title: Resumo
+        sql: resumo
+        type: string
+
+      - name: site
+        title: Site
+        sql: site
+        type: string
+
+      - name: suframa
+        title: Suframa
+        sql: suframa
+        type: string
+
+      - name: telefonePrincipal
+        title: TelefonePrincipal
+        sql: telefonePrincipal
+        type: string
+
+      - name: telefoneSecundario
+        title: TelefoneSecundario
+        sql: telefoneSecundario
+        type: string
+
+      - name: faxPrincipal
+        title: FaxPrincipal
+        sql: faxPrincipal
+        type: string
+
+      - name: faxSecundario
+        title: FaxSecundario
+        sql: faxSecundario
+        type: string
+
+      - name: tipoCliente
+        title: TipoCliente
+        sql: tipoCliente
+        type: number
+
+      - name: tolerancia
+        title: Tolerancia
+        sql: tolerancia
+        type: number
+
+      - name: txf
+        title: Txf
+        sql: txf
+        type: number
+
+      - name: wfi
+        title: Wfi
+        sql: wfi
+        type: string
+
+      - name: simplesNacional
+        title: SimplesNacional
+        sql: simplesNacional
+        type: string
+
+      - name: inscricaoMunicipal
+        title: InscricaoMunicipal
+        sql: inscricaoMunicipal
+        type: string
+
+      - name: numeroEnderecoPgto
+        title: NumeroEnderecoPgto
+        sql: numeroEnderecoPgto
+        type: string
+
+      - name: centroCusto
+        title: CentroCusto
+        sql: centroCusto
+        type: string
+
+      - name: contribuinteICMS
+        title: ContribuinteICMS
+        sql: contribuinteICMS
+        type: string
+
+      - name: condi
+        title: Condi
+        sql: condi
+        type: string
+
+      - name: consumidorFinal
+        title: ConsumidorFinal
+        sql: consumidorFinal
+        type: string
+
+      - name: icmsSt
+        title: IcmsSt
+        sql: icmsSt
+        type: string
+
+      - name: icmsSuframa
+        title: IcmsSuframa
+        sql: icmsSuframa
+        type: string
+
+      - name: ipiSuframa
+        title: IpiSuframa
+        sql: ipiSuframa
+        type: string
+
+      - name: enderecoPgto
+        title: EnderecoPgto
+        sql: enderecoPgto
+        type: string
+
+      - name: envioAutomaticoBoleto
+        title: EnvioAutomaticoBoleto
+        sql: envioAutomaticoBoleto
+        type: string
+
+      - name: pisCofinsSuframa
+        title: PisCofinsSuframa
+        sql: pisCofinsSuframa
+        type: string
+
+      - name: emailCobranca
+        title: EmailCobranca
+        sql: emailCobranca
+        type: string
+
+      - name: enviarPedidoBlocoZbNfe
+        title: EnviarPedidoBlocoZbNfe
+        sql: enviarPedidoBlocoZbNfe
+        type: string
+
+      - name: codigoSuframa
+        title: CodigoSuframa
+        sql: codigoSuframa
+        type: string
+
+      - name: descontarPisCofinsTotal
+        title: DescontarPisCofinsTotal
+        sql: descontarPisCofinsTotal
+        type: string
+
+      - name: descontoExtraPercentual
+        title: DescontoExtraPercentual
+        sql: descontoExtraPercentual
+        type: number
+
+      - name: dataHoraAlteracao
+        title: DataHoraAlteracao
+        sql: dataHoraAlteracao
+        type: time
+
+      - name: retemFunrural
+        title: RetemFunrural
+        sql: retemFunrural
+        type: string
+
+      - name: aliquotaCpp
+        title: AliquotaCpp
+        sql: aliquotaCpp
+        type: number
+
+      - name: aliquotaRat
+        title: AliquotaRat
+        sql: aliquotaRat
+        type: number
+
+      - name: aliquotaSenar
+        title: AliquotaSenar
+        sql: aliquotaSenar
+        type: number
+
+      - name: dataValidacao
+        title: DataValidacao
+        sql: dataValidacao
+        type: string
+
+      - name: usarEnderecoPadrao
+        title: UsarEnderecoPadrao
+        sql: usarEnderecoPadrao
+        type: string
+
+      - name: dataNascimento
+        title: DataNascimento
+        sql: dataNascimento
+        type: string
+
+      - name: entidadeExecutoraPaa
+        title: EntidadeExecutoraPaa
+        sql: entidadeExecutoraPaa
+        type: number
+
+      - name: praca
+        title: Praca
+        sql: praca
+        type: string
+
+      - name: diaFatura
+        title: DiaFatura
+        sql: diaFatura
+        type: number
+
+      - name: idBancos
+        title: IdBancos
+        sql: idBancos
+        type: string
+
+      - name: produtorRural
+        title: ProdutorRural
+        sql: produtorRural
+        type: string
+
+      - name: codigoCnaePrincipal
+        title: CodigoCnaePrincipal
+        sql: codigoCnaePrincipal
+        type: string
+
+      - name: pontoReferencia
+        title: PontoReferencia
+        sql: pontoReferencia
+        type: string
+
+      - name: nFuncionarios
+        title: NFuncionarios
+        sql: nFuncionarios
+        type: number
+
+      - name: capitalSocial
+        title: CapitalSocial
+        sql: capitalSocial
+        type: number
+
+      - name: dataAbertura
+        title: DataAbertura
+        sql: dataAbertura
+        type: string
+
+      - name: naturezaJuridica
+        title: NaturezaJuridica
+        sql: naturezaJuridica
+        type: string
+
+      - name: situacaoCadastral
+        title: SituacaoCadastral
+        sql: situacaoCadastral
+        type: string
+
+      - name: porteEmpresa
+        title: PorteEmpresa
+        sql: porteEmpresa
+        type: string
+
+      - name: dataSituacaoCadastral
+        title: DataSituacaoCadastral
+        sql: dataSituacaoCadastral
+        type: string
+
+      - name: descricaoCnaePrincipal
+        title: DescricaoCnaePrincipal
+        sql: descricaoCnaePrincipal
+        type: string
+
+      - name: registroGeral
+        title: RegistroGeral
+        sql: registroGeral
+        type: string
+
+      - name: observacaoGeral
+        title: ObservacaoGeral
+        sql: observacaoGeral
+        type: string
+
+      - name: observacaoFaturamento
+        title: ObservacaoFaturamento
+        sql: observacaoFaturamento
+        type: string
+
+      - name: observacaoFinanceiro
+        title: ObservacaoFinanceiro
+        sql: observacaoFinanceiro
+        type: string
+
+      - name: observacaoVendas
+        title: ObservacaoVendas
+        sql: observacaoVendas
+        type: string
+
+      - name: observacaoOutrosEnderecos
+        title: ObservacaoOutrosEnderecos
+        sql: observacaoOutrosEnderecos
+        type: string
+
+      - name: observacaoContatos
+        title: ObservacaoContatos
+        sql: observacaoContatos
+        type: string
+
+      - name: observacaoContasRelacionadas
+        title: ObservacaoContasRelacionadas
+        sql: observacaoContasRelacionadas
+        type: string
+
+      - name: referencias
+        title: Referencias
+        sql: referencias
+        type: string
+
+      - name: pickingRealizarConferencia
+        title: PickingRealizarConferencia
+        sql: pickingRealizarConferencia
+        type: string
+
+      - name: documento
+        title: Documento
+        sql: documento
+        type: string
+
+      - name: naoCalculaDifal
+        title: NaoCalculaDifal
+        sql: naoCalculaDifal
+        type: string
+
+      - name: limiteCreditoGrupoEmpresarial
+        title: LimiteCreditoGrupoEmpresarial
+        sql: limiteCreditoGrupoEmpresarial
+        type: number
+
+      - name: diasInadGrupoEmpresarial
+        title: DiasInadGrupoEmpresarial
+        sql: diasInadGrupoEmpresarial
+        type: number
+
+      - name: icmsStSuframa
+        title: IcmsStSuframa
+        sql: icmsStSuframa
+        type: string
+
+      - name: indOpcCp
+        title: IndOpcCp
+        sql: indOpcCp
+        type: string
+
+      - name: valorSaldoFlex
+        title: ValorSaldoFlex
+        sql: valorSaldoFlex
+        type: number
+
+      - name: envioAutomaticoBoletoUnicoEmail
+        title: EnvioAutomaticoBoletoUnicoEmail
+        sql: envioAutomaticoBoletoUnicoEmail
+        type: string
+
+      - name: bloquearRestricaoCredito
+        title: BloquearRestricaoCredito
+        sql: bloquearRestricaoCredito
+        type: string
+
+      - name: codContaContabilPassivo
+        title: CodContaContabilPassivo
+        sql: codContaContabilPassivo
+        type: number
+
+      - name: indNatRet
+        title: IndNatRet
+        sql: indNatRet
+        type: string
+
+      - name: cupomFiscal
+        title: CupomFiscal
+        sql: cupomFiscal
+        type: string
+
+      - name: nif
+        title: Nif
+        sql: nif
+        type: string
