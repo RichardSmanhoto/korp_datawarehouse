@@ -227,11 +227,6 @@ cubes:
         sql: descricaoCidade
         type: string
 
-      - name: CGC
-        title: CGC
-        sql: CGC
-        type: string
-
       - name: idCadastroCliente
         title: Id Cadastro Cliente
         sql: idCadastroCliente
