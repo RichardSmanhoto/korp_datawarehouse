@@ -16,7 +16,6 @@ cubes:
         vc.DescricaoEstado AS descricaoEstado,
         vc.CodigoCidade AS codigoCidade,
         vc.DescricaoCidade AS descricaoCidade,
-        vc.CGC AS CGC,
         cc.R_E_C_N_O_ AS idCadastroCliente,
         cc.AGENCIA AS agenciaBancaria,
         cc.ASN_COD_LOCAL_DESTINO AS asnCodLocalDestino,
@@ -136,7 +135,6 @@ cubes:
         cc.OBS_CONTAS_RELACIONADAS AS observacaoContasRelacionadas,
         cc.REFERENCIAS AS referencias,
         cc.PICKING_REALIZAR_CONFERENCIA AS pickingRealizarConferencia,
-        cc.DOCUMENTO AS documento,
         cc.NAO_CALCULA_DIFAL AS naoCalculaDifal,
         cc.LIMITE_CRED_GRUPO_EMPRESARIAL AS limiteCreditoGrupoEmpresarial,
         cc.DIAS_INAD_GRUPO_EMPRESARIAL AS diasInadGrupoEmpresarial,
@@ -820,11 +818,6 @@ cubes:
       - name: pickingRealizarConferencia
         title: Picking Realizar Conferência
         sql: pickingRealizarConferencia
-        type: string
-
-      - name: documento
-        title: Documento
-        sql: documento
         type: string
 
       - name: naoCalculaDifal
