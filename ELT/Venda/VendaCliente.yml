@@ -153,11 +153,9 @@ cubes:
         cc.TP_ODF AS tpOdf,
         cc.REGIAO AS regiao,
         cc.REFCLI AS referenciaCliente,
-        cc.D_E_L_E_T_ AS deletado,
         cc.REGRA_PARC AS regraParcelamento,
         cc.REGRA_VENC AS regraVencimento,
         cc.PLANO_DEVOL AS planoDevolucao,
-        cc.TESTE AS teste,
         cc.CT_OPERACAO AS codigoOperacaoContabil,
         cc.PLANO AS planoContaGerencial,
         cc.MENSALISTA AS mensalista,
@@ -959,11 +957,6 @@ cubes:
         sql: referenciaCliente
         type: string
 
-      - name: deletado
-        title: Deletado
-        sql: deletado
-        type: string
-
       - name: regraParcelamento
         title: Regra Parcelamento
         sql: regraParcelamento
@@ -977,11 +970,6 @@ cubes:
       - name: planoDevolucao
         title: Plano Devolução
         sql: planoDevolucao
-        type: string
-
-      - name: teste
-        title: Teste
-        sql: teste
         type: string
 
       - name: codigoOperacaoContabil
