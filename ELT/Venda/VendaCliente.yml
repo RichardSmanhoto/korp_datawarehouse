@@ -28,6 +28,7 @@ cubes:
         cc.CEP AS cep,
         cc.CEPPGTO AS cepPagamento,
         cc.CFO AS cfo,
+        cc.CGC AS CGC,
         cc.CGC_TRAN AS cnpjTransportadora,
         cc.CIDADE AS cidade,
         cc.CIDADEFRETE AS cidadeFrete,
@@ -146,6 +147,54 @@ cubes:
         cc.CONTA_CONTABIL_PASSIVO AS codContaContabilPassivo,
         cc.IND_NAT_RET AS indNatRet,
         cc.CUPOM_FISCAL AS cupomFiscal,
+        cc.TRANSP AS codigoCadastroTransportadora,
+        cc.COD_REP AS codigoRepresentante,
+        cc.STATUS AS codigoStatus,
+        cc.TP_ODF AS tpOdf,
+        cc.REGIAO AS regiao,
+        cc.REFCLI AS referenciaCliente,
+        cc.D_E_L_E_T_ AS deletado,
+        cc.REGRA_PARC AS regraParcelamento,
+        cc.REGRA_VENC AS regraVencimento,
+        cc.PLANO_DEVOL AS planoDevolucao,
+        cc.TESTE AS teste,
+        cc.CT_OPERACAO AS codigoOperacaoContabil,
+        cc.PLANO AS planoContaGerencial,
+        cc.MENSALISTA AS mensalista,
+        cc.CREDITO_LOJA AS creditoLoja,
+        cc.IBGE_MUNICIPIO AS ibgeMunicipio,
+        cc.IBGE_PAIS AS ibgePais,
+        cc.COD_JUROS AS codigoJuros,
+        cc.EXCEDENTE_PARA_ESTOQUE AS excedenteParaEstoque,
+        cc.DOC_FINANCEIRO AS documentoFinanceiro,
+        cc.TIPOPGTO AS tipoPagamento,
+        cc.RAZAO_CONTA AS razaoConta,
+        cc.DEBITO_AUTOMATICO AS debitoAutomatico,
+        cc.RESERVA_PARA_CLIENTE AS reservaParaCliente,
+        cc.EMAIL_ENVIADO AS emailEnviado,
+        cc.CLIENTES_CONTRATO_CONFIDENCIAL AS clientesContratoConfidencial,
+        cc.CONTRATO_CONFIDENCIALIDADE AS contratoConfidencialidade,
+        cc.CT_CRT AS regimeTributario,
+        cc.USUARIO AS usuario,
+        cc.USUARIO_ALTERACAO AS usuarioAlteracao,
+        cc.DATAHORA AS dataHora,
+        cc.COD_CONTA AS codigoContaContabil,
+        cc.MICRORREGIAO AS microrregiao,
+        cc.MESORREGIAO AS mesorregiao,
+        cc.CODIGO_FORNECEDOR AS codigoFornecedor,
+        cc.CODIGO_MOTIVO_DESONERACAO AS codigoMotivoDesoneracao,
+        cc.TRANSP_REDESPACHO AS transpRedespacho,
+        cc.TIPO_FRETE_REDESPACHO AS tipoFreteRedespacho,
+        cc.CONTA_CONTABIL_ADIANTAMENTO AS contaContabilAdiantamento,
+        cc.TIPO_CONTA AS tipoConta,
+        cc.CODIGO_CARTEIRA AS codigoCarteira,
+        cc.CODIGO_MOTIVO_DESONERACAO_ST AS codigoMotivoDesoneracaoSt,
+        cc.CODIGO_PERFIL_FINANCEIRO AS codigoPerfilFinanceiro,
+        cc.RECNO_VEN_TIPO_ENTREGA AS recnoVenTipoEntrega,
+        cc.CST_ENVIARCODIGO_TAGINFOADD AS cstEnviarCodigoTagInfoAdd,
+        cc.TIPO_ENTE_GOVERNAMENTAL AS tipoEnteGovernamental,
+        cc.CGC_SEM_MASCARA AS cgcSemMascara,
+        cc.CODIGO_MOTIVO_NAO_INFORMAR_NIF AS codigoMotivoNaoInformarNif,
         cc.NIF AS nif
       FROM `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaCliente` vc
       LEFT JOIN `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CLIENTES` cc
@@ -223,6 +272,11 @@ cubes:
       - name: descricaoCidade
         title: Cidade
         sql: descricaoCidade
+        type: string
+
+      - name: CGC
+        title: CGC
+        sql: CGC
         type: string
 
       - name: idCadastroCliente
@@ -873,6 +927,246 @@ cubes:
       - name: cupomFiscal
         title: Cupom Fiscal
         sql: cupomFiscal
+        type: string
+
+      - name: codigoCadastroTransportadora
+        title: Código Cadastro Transportadora
+        sql: codigoCadastroTransportadora
+        type: string
+
+      - name: codigoRepresentante
+        title: Código Representante
+        sql: codigoRepresentante
+        type: string
+
+      - name: codigoStatus
+        title: Código Status
+        sql: codigoStatus
+        type: string
+
+      - name: tpOdf
+        title: TP ODF
+        sql: tpOdf
+        type: string
+
+      - name: regiao
+        title: Região
+        sql: regiao
+        type: string
+
+      - name: referenciaCliente
+        title: Referência Cliente
+        sql: referenciaCliente
+        type: string
+
+      - name: deletado
+        title: Deletado
+        sql: deletado
+        type: string
+
+      - name: regraParcelamento
+        title: Regra Parcelamento
+        sql: regraParcelamento
+        type: string
+
+      - name: regraVencimento
+        title: Regra Vencimento
+        sql: regraVencimento
+        type: string
+
+      - name: planoDevolucao
+        title: Plano Devolução
+        sql: planoDevolucao
+        type: string
+
+      - name: teste
+        title: Teste
+        sql: teste
+        type: string
+
+      - name: codigoOperacaoContabil
+        title: Código Operação Contábil
+        sql: codigoOperacaoContabil
+        type: string
+
+      - name: planoContaGerencial
+        title: Plano Conta Gerencial
+        sql: planoContaGerencial
+        type: string
+
+      - name: mensalista
+        title: Mensalista
+        sql: mensalista
+        type: string
+
+      - name: creditoLoja
+        title: Crédito Loja
+        sql: creditoLoja
+        type: string
+
+      - name: ibgeMunicipio
+        title: IBGE Município
+        sql: ibgeMunicipio
+        type: string
+
+      - name: ibgePais
+        title: IBGE País
+        sql: ibgePais
+        type: string
+
+      - name: codigoJuros
+        title: Código Juros
+        sql: codigoJuros
+        type: string
+
+      - name: excedenteParaEstoque
+        title: Excedente Para Estoque
+        sql: excedenteParaEstoque
+        type: string
+
+      - name: documentoFinanceiro
+        title: Documento Financeiro
+        sql: documentoFinanceiro
+        type: string
+
+      - name: tipoPagamento
+        title: Tipo Pagamento
+        sql: tipoPagamento
+        type: string
+
+      - name: razaoConta
+        title: Razão Conta
+        sql: razaoConta
+        type: string
+
+      - name: debitoAutomatico
+        title: Débito Automático
+        sql: debitoAutomatico
+        type: string
+
+      - name: reservaParaCliente
+        title: Reserva Para Cliente
+        sql: reservaParaCliente
+        type: string
+
+      - name: emailEnviado
+        title: Email Enviado
+        sql: emailEnviado
+        type: string
+
+      - name: clientesContratoConfidencial
+        title: Clientes Contrato Confidencial
+        sql: clientesContratoConfidencial
+        type: string
+
+      - name: contratoConfidencialidade
+        title: Contrato Confidencialidade
+        sql: contratoConfidencialidade
+        type: string
+
+      - name: regimeTributario
+        title: Regime Tributário
+        sql: regimeTributario
+        type: string
+
+      - name: usuario
+        title: Usuário
+        sql: usuario
+        type: string
+
+      - name: usuarioAlteracao
+        title: Usuário Alteração
+        sql: usuarioAlteracao
+        type: string
+
+      - name: dataHora
+        title: Data Hora
+        sql: dataHora
+        type: time
+
+      - name: codigoContaContabil
+        title: Código Conta Contábil
+        sql: codigoContaContabil
+        type: string
+
+      - name: microrregiao
+        title: Microrregião
+        sql: microrregiao
+        type: string
+
+      - name: mesorregiao
+        title: Mesorregião
+        sql: mesorregiao
+        type: string
+
+      - name: codigoFornecedor
+        title: Código Fornecedor
+        sql: codigoFornecedor
+        type: string
+
+      - name: codigoMotivoDesoneracao
+        title: Código Motivo Desoneração
+        sql: codigoMotivoDesoneracao
+        type: string
+
+      - name: transpRedespacho
+        title: Transp Redespacho
+        sql: transpRedespacho
+        type: string
+
+      - name: tipoFreteRedespacho
+        title: Tipo Frete Redespacho
+        sql: tipoFreteRedespacho
+        type: string
+
+      - name: contaContabilAdiantamento
+        title: Conta Contábil Adiantamento
+        sql: contaContabilAdiantamento
+        type: string
+
+      - name: tipoConta
+        title: Tipo Conta
+        sql: tipoConta
+        type: string
+
+      - name: codigoCarteira
+        title: Código Carteira
+        sql: codigoCarteira
+        type: string
+
+      - name: codigoMotivoDesoneracaoSt
+        title: Código Motivo Desoneração ST
+        sql: codigoMotivoDesoneracaoSt
+        type: string
+
+      - name: codigoPerfilFinanceiro
+        title: Código Perfil Financeiro
+        sql: codigoPerfilFinanceiro
+        type: string
+
+      - name: recnoVenTipoEntrega
+        title: Recno Ven Tipo Entrega
+        sql: recnoVenTipoEntrega
+        type: number
+
+      - name: cstEnviarCodigoTagInfoAdd
+        title: CST Enviar Código Tag Info Add
+        sql: cstEnviarCodigoTagInfoAdd
+        type: string
+
+      - name: tipoEnteGovernamental
+        title: Tipo Ente Governamental
+        sql: tipoEnteGovernamental
+        type: string
+
+      - name: cgcSemMascara
+        title: CGC Sem Máscara
+        sql: cgcSemMascara
+        type: string
+
+      - name: codigoMotivoNaoInformarNif
+        title: Código Motivo Não Informar NIF
+        sql: codigoMotivoNaoInformarNif
         type: string
 
       - name: nif
