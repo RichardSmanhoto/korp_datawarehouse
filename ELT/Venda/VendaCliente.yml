@@ -3,7 +3,7 @@ cubes:
     title: Vendas Clientes
     sql: |
       SELECT
-        vc.Id AS id,
+        vc.Id,
         vc.Codigo AS codigo,
         vc.RazaoSocial AS razaoSocial,
         vc.CodigoSegmento AS codigoSegmento,
@@ -206,9 +206,9 @@ cubes:
         type: count
 
     dimensions:
-      - name: id
+      - name: Id
         title: Id
-        sql: id
+        sql: Id
         type: number
         primary_key: true
 
