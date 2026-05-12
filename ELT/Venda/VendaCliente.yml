@@ -195,7 +195,7 @@ cubes:
         cc.CODIGO_MOTIVO_NAO_INFORMAR_NIF AS codigoMotivoNaoInformarNif,
         cc.NIF AS nif
       FROM `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_VendaCliente` vc
-      LEFT JOIN `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CLIENTES` cc
+      INNER JOIN `viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_CLIENTES` cc
         ON vc.Codigo = cc.CODIGO
 
     meta:
