@@ -1,0 +1,141 @@
+cubes:
+  - name: FatoLogisticaEstoqueLocal
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_ESTOQUE_LOCAL`"
+    title: Logistica Estoque Local
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.CODIGO = {LogisticaProduto}.Codigo"
+
+      - name: LogisticaProdutoLocal
+        relationship: belongsTo
+        sql: "{CUBE}.RECNO_LOCAIS = {LogisticaProdutoLocal}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.EMPRESA_RECNO = {PreCadastrosEmpresa}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: QTDE
+        type: sum
+        title: Soma da Quantidade
+
+      - name: quantidadeEntradaSum
+        sql: QTDE_ENTRADA
+        type: sum
+        title: Soma da Quantidade de Entrada
+
+      - name: quantidadeSaidaSum
+        sql: QTDE_SAIDA
+        type: sum
+        title: Soma da Quantidade de Saida
+
+      - name: saldoInicialSum
+        sql: SALDO_INICIAL
+        type: sum
+        title: Soma do Saldo Inicial
+
+      - name: pesoBrutoSum
+        sql: PESO_BRUTO
+        type: sum
+        title: Soma do Peso Bruto
+
+      - name: pesoLiquidoSum
+        sql: PESO_LIQUIDO
+        type: sum
+        title: Soma do Peso Liquido
+
+    dimensions:
+      - name: id
+        sql: R_E_C_N_O_
+        type: number
+        primary_key: true
+        title: Id
+
+      - name: codigoProduto
+        sql: CODIGO
+        type: string
+        title: Codigo do Produto
+
+      - name: idCadastroLocalEstoque
+        sql: RECNO_LOCAIS
+        type: number
+        title: Cadastro Local Estoque
+
+      - name: idEmpresa
+        sql: EMPRESA_RECNO
+        type: number
+        title: Empresa
+
+      - name: codigoArmazem
+        sql: CODIGO_ARMAZEM
+        type: string
+        title: Codigo do Armazem
+
+      - name: local
+        sql: LOCAL
+        type: string
+        title: Local
+
+      - name: lote
+        sql: LOTE
+        type: string
+        title: Lote
+
+      - name: quantidade
+        sql: QTDE
+        type: number
+        title: Quantidade
+
+      - name: quantidadeEntrada
+        sql: QTDE_ENTRADA
+        type: number
+        title: Quantidade de Entrada
+
+      - name: quantidadeSaida
+        sql: QTDE_SAIDA
+        type: number
+        title: Quantidade de Saida
+
+      - name: saldoInicial
+        sql: SALDO_INICIAL
+        type: number
+        title: Saldo Inicial
+
+      - name: pesoBruto
+        sql: PESO_BRUTO
+        type: number
+        title: Peso Bruto
+
+      - name: pesoLiquido
+        sql: PESO_LIQUIDO
+        type: number
+        title: Peso Liquido
+
+      - name: dataHoraRegistro
+        sql: DATAHORA_REG
+        type: time
+        title: Data/Hora Registro
+
+      - name: dataCriacao
+        sql: "parseDateTimeBestEffortOrNull(if(length(trim(BOTH ' ' FROM toString(DTCRIACAO))) = 8, concat(substring(toString(DTCRIACAO), 1, 4), '-', substring(toString(DTCRIACAO), 5, 2), '-', substring(toString(DTCRIACAO), 7, 2)), NULL))"
+        type: time
+        title: Data de Criacao
+
+      - name: dataFabricacao
+        sql: "parseDateTimeBestEffortOrNull(if(length(trim(BOTH ' ' FROM toString(DTFABRICACAO))) = 8, concat(substring(toString(DTFABRICACAO), 1, 4), '-', substring(toString(DTFABRICACAO), 5, 2), '-', substring(toString(DTFABRICACAO), 7, 2)), NULL))"
+        type: time
+        title: Data de Fabricacao
+
+      - name: dataValidade
+        sql: "parseDateTimeBestEffortOrNull(if(length(trim(BOTH ' ' FROM toString(VALIDADE))) = 8, concat(substring(toString(VALIDADE), 1, 4), '-', substring(toString(VALIDADE), 5, 2), '-', substring(toString(VALIDADE), 7, 2)), NULL))"
+        type: time
+        title: Data de Validade
