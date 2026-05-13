@@ -4,6 +4,7 @@ cubes:
     sql: |
       SELECT
         vc.Id,
+        vc.GuidId AS GuidId,
         vc.Codigo AS codigo,
         vc.RazaoSocial AS razaoSocial,
         vc.CodigoSegmento AS codigoSegmento,
@@ -211,6 +212,11 @@ cubes:
         sql: Id
         type: number
         primary_key: true
+
+      - name: GuidId
+        title: Guid Id
+        sql: GuidId
+        type: string
 
       - name: codigo
         title: Código

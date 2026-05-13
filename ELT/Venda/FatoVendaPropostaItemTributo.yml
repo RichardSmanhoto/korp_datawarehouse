@@ -1,0 +1,202 @@
+cubes:
+  - name: FatoVendaPropostaItemTributo
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_impostositemproposta`"
+    title: Venda Proposta Comercial - Tributos do Item
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FatoVendaPropostaItem
+        relationship: belongsTo
+        sql: "{CUBE}.itempropostaid = {FatoVendaPropostaItem}.id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: icmsValorSum
+        sql: icms_valor
+        type: sum
+        title: Soma do ICMS
+
+      - name: icmsStValorSum
+        sql: icmsst_valorst
+        type: sum
+        title: Soma do ICMS-ST
+
+      - name: ipiValorSum
+        sql: ipi_valor
+        type: sum
+        title: Soma do IPI
+
+      - name: pisValorSum
+        sql: pis_valor
+        type: sum
+        title: Soma do PIS
+
+      - name: cofinsValorSum
+        sql: cofins_valor
+        type: sum
+        title: Soma do COFINS
+
+      - name: fcpValorSum
+        sql: fcp_valor
+        type: sum
+        title: Soma do FCP
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idItemProposta
+        sql: itempropostaid
+        type: string
+        title: Item da Proposta
+
+      - name: icmsAliquotaCheia
+        sql: icms_aliquotacheia
+        type: number
+        title: ICMS Alíquota Cheia
+
+      - name: icmsAliquotaReducao
+        sql: icms_aliquotareducao
+        type: number
+        title: ICMS Alíquota Redução
+
+      - name: icmsBase
+        sql: icms_base
+        type: number
+        title: ICMS Base
+
+      - name: icmsReducaoBase
+        sql: icms_reducaobase
+        type: number
+        title: ICMS Redução Base
+
+      - name: icmsValor
+        sql: icms_valor
+        type: number
+        title: ICMS Valor
+
+      - name: icmsDiferimento
+        sql: icms_diferimento
+        type: number
+        title: ICMS Diferimento
+
+      - name: icmsTotalDiferido
+        sql: icms_totaldiferido
+        type: number
+        title: ICMS Total Diferido
+
+      - name: icmsTotalSemDiferimento
+        sql: icms_totalsemdiferimento
+        type: number
+        title: ICMS Total Sem Diferimento
+
+      - name: icmsStMva
+        sql: icmsst_mva
+        type: number
+        title: ICMS-ST MVA
+
+      - name: icmsStAliquotaReducao
+        sql: icmsst_aliquotareducao
+        type: number
+        title: ICMS-ST Alíquota Redução
+
+      - name: icmsStAliquotaCheia
+        sql: icmsst_aliquotacheia
+        type: number
+        title: ICMS-ST Alíquota Cheia
+
+      - name: icmsStBaseSt
+        sql: icmsst_basest
+        type: number
+        title: ICMS-ST Base
+
+      - name: icmsStReducaoBase
+        sql: icmsst_reducaobase
+        type: number
+        title: ICMS-ST Redução Base
+
+      - name: icmsStValorSt
+        sql: icmsst_valorst
+        type: number
+        title: ICMS-ST Valor
+
+      - name: icmsStDiferimento
+        sql: icmsst_diferimento
+        type: number
+        title: ICMS-ST Diferimento
+
+      - name: icmsStTotalIcms
+        sql: icmsst_totalicms
+        type: number
+        title: ICMS-ST Total ICMS
+
+      - name: ipiAliquota
+        sql: ipi_aliquota
+        type: number
+        title: IPI Alíquota
+
+      - name: ipiValor
+        sql: ipi_valor
+        type: number
+        title: IPI Valor
+
+      - name: ipiBase
+        sql: ipi_base
+        type: number
+        title: IPI Base
+
+      - name: pisAliquota
+        sql: pis_aliquota
+        type: number
+        title: PIS Alíquota
+
+      - name: pisValor
+        sql: pis_valor
+        type: number
+        title: PIS Valor
+
+      - name: pisBase
+        sql: pis_base
+        type: number
+        title: PIS Base
+
+      - name: cofinsAliquota
+        sql: cofins_aliquota
+        type: number
+        title: COFINS Alíquota
+
+      - name: cofinsValor
+        sql: cofins_valor
+        type: number
+        title: COFINS Valor
+
+      - name: cofinsBase
+        sql: cofins_base
+        type: number
+        title: COFINS Base
+
+      - name: fcpBase
+        sql: fcp_base
+        type: number
+        title: FCP Base
+
+      - name: fcpAliquota
+        sql: fcp_aliquota
+        type: number
+        title: FCP Alíquota
+
+      - name: fcpValor
+        sql: fcp_valor
+        type: number
+        title: FCP Valor
+
+      - name: precoMedio
+        sql: precomedio
+        type: number
+        title: Preço Médio

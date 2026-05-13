@@ -1,0 +1,116 @@
+cubes:
+  - name: FatoVendaPropostaSaldoIndisponivel
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_logpercaporsaldoindisponivelproposta`"
+    title: Venda Proposta Comercial - Saldo Indisponível
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FatoVendaPropostaCabecalho
+        relationship: belongsTo
+        sql: "{CUBE}.idproposta = {FatoVendaPropostaCabecalho}.id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.idproduto = {LogisticaProduto}.GuidId"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: saldoDisponivelSum
+        sql: saldodisponivel
+        type: sum
+        title: Soma do Saldo Disponível
+
+      - name: quantidadeVendaPerdidaSum
+        sql: quantidadevendaperdida
+        type: sum
+        title: Soma da Quantidade Venda Perdida
+
+      - name: valorUnitarioSum
+        sql: valorunitario
+        type: sum
+        title: Soma do Valor Unitário
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idProposta
+        sql: idproposta
+        type: string
+        title: Proposta
+
+      - name: idProduto
+        sql: idproduto
+        type: string
+        title: Produto
+
+      - name: nomeFantasiaEmpresa
+        sql: nomefantasiaempresa
+        type: string
+        title: Empresa
+
+      - name: numeroPedido
+        sql: numeropedido
+        type: string
+        title: Número do Pedido
+
+      - name: codigoCliente
+        sql: codigocliente
+        type: string
+        title: Código do Cliente
+
+      - name: razaoSocialCliente
+        sql: razaosocialcliente
+        type: string
+        title: Razão Social do Cliente
+
+      - name: codigoProduto
+        sql: codigoproduto
+        type: string
+        title: Código do Produto
+
+      - name: descricaoProduto
+        sql: descricaoproduto
+        type: string
+        title: Descrição do Produto
+
+      - name: quantidade
+        sql: quantidade
+        type: number
+        title: Quantidade
+
+      - name: saldoDisponivel
+        sql: saldodisponivel
+        type: number
+        title: Saldo Disponível
+
+      - name: quantidadeVendaPerdida
+        sql: quantidadevendaperdida
+        type: number
+        title: Quantidade Venda Perdida
+
+      - name: valorUnitario
+        sql: valorunitario
+        type: number
+        title: Valor Unitário
+
+      - name: dataEmissao
+        sql: dataemissao
+        type: time
+        title: Data de Emissão
+
+      - name: dataEntrega
+        sql: dataentrega
+        type: time
+        title: Data de Entrega

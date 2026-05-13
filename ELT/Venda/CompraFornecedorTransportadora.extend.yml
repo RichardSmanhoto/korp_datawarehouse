@@ -1,0 +1,7 @@
+cubes:
+  - name: CompraFornecedorTransportadora
+    extends: CompraFornecedor
+    title: Compra Fornecedor - Transportadora
+
+    meta:
+      - versao: "__COMMIT_SHA__"

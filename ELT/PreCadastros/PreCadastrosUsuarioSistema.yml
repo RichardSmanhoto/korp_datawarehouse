@@ -1,0 +1,48 @@
+cubes:
+  - name: PreCadastrosUsuarioSistema
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_PreCadastrosUsuarioSistema`"
+    title: Geral Usuário Sistema
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: primeiroNome
+        sql: PrimeiroNome
+        type: string
+        title: Primeiro Nome
+
+      - name: segundoNome
+        sql: SegundoNome
+        type: string
+        title: Segundo Nome
+
+      - name: login
+        sql: Login
+        type: string
+        title: Login
+
+      - name: email
+        sql: Email
+        type: string
+        title: Email
+
+      - name: telefone
+        sql: Telefone
+        type: string
+        title: Telefone
+
+      - name: ativo
+        sql: Ativo
+        type: boolean
+        title: Ativo

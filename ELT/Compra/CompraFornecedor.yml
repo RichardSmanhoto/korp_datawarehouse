@@ -16,6 +16,11 @@ cubes:
         type: number
         primary_key: true
 
+      - name: guidId
+        sql: GuidId
+        type: string
+        title: Guid Id
+
       - name: codigo
         sql: Codigo
         type: string
