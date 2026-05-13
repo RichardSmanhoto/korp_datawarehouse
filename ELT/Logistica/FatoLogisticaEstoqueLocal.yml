@@ -9,15 +9,15 @@ cubes:
     joins:
       - name: LogisticaProduto
         relationship: belongsTo
-        sql: "{CUBE}.CODIGO = {LogisticaProduto}.codigo"
+        sql: "{CUBE}.CODIGO = {LogisticaProduto}.Codigo"
 
       - name: LogisticaProdutoLocal
         relationship: belongsTo
-        sql: "{CUBE}.RECNO_LOCAIS = {LogisticaProdutoLocal}.id"
+        sql: "{CUBE}.RECNO_LOCAIS = {LogisticaProdutoLocal}.Id"
 
       - name: PreCadastrosEmpresa
         relationship: belongsTo
-        sql: "{CUBE}.EMPRESA_RECNO = {PreCadastrosEmpresa}.id"
+        sql: "{CUBE}.EMPRESA_RECNO = {PreCadastrosEmpresa}.Id"
 
     measures:
       - name: count
