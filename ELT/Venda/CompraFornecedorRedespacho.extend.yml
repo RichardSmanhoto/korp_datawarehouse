@@ -1,0 +1,7 @@
+cubes:
+  - name: CompraFornecedorRedespacho
+    extends: CompraFornecedor
+    title: Compra Fornecedor - Redespacho
+
+    meta:
+      - versao: "__COMMIT_SHA__"

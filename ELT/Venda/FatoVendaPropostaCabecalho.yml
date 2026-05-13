@@ -1,0 +1,508 @@
+cubes:
+  - name: FatoVendaPropostaCabecalho
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_proposta`"
+    title: Venda Proposta Comercial - Cabeçalho
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: VendaCliente
+        relationship: belongsTo
+        sql: "{CUBE}.cliente_id = {VendaCliente}.GuidId"
+
+      - name: CompraFornecedor
+        relationship: belongsTo
+        sql: "{CUBE}.representanteid = {CompraFornecedor}.GuidId"
+
+      - name: CompraFornecedorTransportadora
+        relationship: belongsTo
+        sql: "{CUBE}.transportadoraid = {CompraFornecedorTransportadora}.GuidId"
+
+      - name: CompraFornecedorRedespacho
+        relationship: belongsTo
+        sql: "{CUBE}.transportadoraredespachoid = {CompraFornecedorRedespacho}.GuidId"
+
+      - name: PreCadastrosUsuarioSistema
+        relationship: belongsTo
+        sql: "{CUBE}.aprovadorid = {PreCadastrosUsuarioSistema}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorFreteSum
+        sql: valorfrete
+        type: sum
+        title: Soma do Frete
+
+      - name: adiantamentoSum
+        sql: adiantamento
+        type: sum
+        title: Soma do Adiantamento
+
+      - name: valorProdutosSum
+        sql: valorestotais_produtos
+        type: sum
+        title: Soma dos Produtos
+
+      - name: valorTotalPropostaSum
+        sql: valorestotais_valortotalproposta
+        type: sum
+        title: Soma do Valor Total da Proposta
+
+      - name: valorDescontoSum
+        sql: valorestotais_desconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: valorAcrescimoSum
+        sql: valorestotais_acrescimo
+        type: sum
+        title: Soma do Acréscimo
+
+      - name: lucroLiquidoSum
+        sql: lucroliquido
+        type: sum
+        title: Soma do Lucro Líquido
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idCliente
+        sql: cliente_id
+        type: string
+        title: Cliente
+
+      - name: idTransportadora
+        sql: transportadoraid
+        type: string
+        title: Transportadora
+
+      - name: idTransportadoraRedespacho
+        sql: transportadoraredespachoid
+        type: string
+        title: Transportadora Redespacho
+
+      - name: idRepresentante
+        sql: representanteid
+        type: string
+        title: Representante
+
+      - name: idAprovador
+        sql: aprovadorid
+        type: string
+        title: Aprovador
+
+      - name: pedidoNumero
+        sql: pedido_numero
+        type: string
+        title: Número do Pedido
+
+      - name: clienteCodigo
+        sql: cliente_codigo
+        type: string
+        title: Código do Cliente
+
+      - name: freteCodigo
+        sql: fretecodigo
+        type: string
+        title: Código do Frete
+
+      - name: freteRedespachoCodigo
+        sql: freteredespachocodigo
+        type: string
+        title: Código do Frete Redespacho
+
+      - name: ordemCompra
+        sql: ordemcompra
+        type: string
+        title: Ordem de Compra
+
+      - name: numeroRma
+        sql: numerorma
+        type: number
+        title: Número RMA
+
+      - name: numeroFiname
+        sql: numerofiname
+        type: string
+        title: Número Finame
+
+      - name: codigoPedidoEcommerce
+        sql: codigopedidoecommerce
+        type: string
+        title: Código do Pedido E-commerce
+
+      - name: identificadorIntermediador
+        sql: identificadorintermediador
+        type: string
+        title: Identificador do Intermediador
+
+      - name: numeroPedidoOrigemIntercompany
+        sql: numeropedidoorigemintercompany
+        type: string
+        title: Número Pedido Origem Intercompany
+
+      - name: dataEntrega
+        sql: dataentrega
+        type: time
+        title: Data de Entrega
+
+      - name: dataEmissao
+        sql: dataemissao
+        type: time
+        title: Data de Emissão
+
+      - name: dataValidade
+        sql: datavalidade
+        type: time
+        title: Data de Validade
+
+      - name: dataLimiteReserva
+        sql: datalimitereserva
+        type: time
+        title: Data Limite Reserva
+
+      - name: dataAlteracaoStatus
+        sql: dataalteracaostatus
+        type: time
+        title: Data Alteração Status
+
+      - name: dataCotacao
+        sql: datacotacao
+        type: time
+        title: Data da Cotação
+
+      - name: pedidoDataCriacao
+        sql: pedido_datacriacao
+        type: time
+        title: Data Criação do Pedido
+
+      - name: pedidoDataRevisaoAtual
+        sql: pedido_datarevisaoatual
+        type: time
+        title: Data Revisão Atual do Pedido
+
+      - name: dataCriacao
+        sql: datacriacao
+        type: time
+        title: Data de Criação
+
+      - name: valorFrete
+        sql: valorfrete
+        type: number
+        title: Frete
+
+      - name: percentualFrete
+        sql: percentualfrete
+        type: number
+        title: Percentual de Frete
+
+      - name: adiantamento
+        sql: adiantamento
+        type: number
+        title: Adiantamento
+
+      - name: valoresTotaisProdutos
+        sql: valorestotais_produtos
+        type: number
+        title: Valor Produtos
+
+      - name: valoresTotaisProdutosRecorrente
+        sql: valorestotais_produtosrecorrente
+        type: number
+        title: Valor Produtos Recorrente
+
+      - name: valoresTotaisIcms
+        sql: valorestotais_icms
+        type: number
+        title: ICMS
+
+      - name: valoresTotaisFrete
+        sql: valorestotais_frete
+        type: number
+        title: Valor Total Frete
+
+      - name: valoresTotaisIpi
+        sql: valorestotais_ipi
+        type: number
+        title: IPI
+
+      - name: valoresTotaisIcmsSt
+        sql: valorestotais_icmsst
+        type: number
+        title: ICMS-ST
+
+      - name: valoresTotaisFcpSt
+        sql: valorestotais_fcpst
+        type: number
+        title: FCP-ST
+
+      - name: valoresTotaisDesonerado
+        sql: valorestotais_desonerado
+        type: number
+        title: Desonerado
+
+      - name: valoresTotaisDesconto
+        sql: valorestotais_desconto
+        type: number
+        title: Desconto
+
+      - name: valoresTotaisAcrescimo
+        sql: valorestotais_acrescimo
+        type: number
+        title: Acréscimo
+
+      - name: valoresTotaisOrcamento
+        sql: valorestotais_orcamento
+        type: number
+        title: Orçamento
+
+      - name: valoresTotaisValorTotalProposta
+        sql: valorestotais_valortotalproposta
+        type: number
+        title: Valor Total Proposta
+
+      - name: lucratividade
+        sql: lucratividade
+        type: number
+        title: Lucratividade
+
+      - name: rentabilidade
+        sql: rentabilidade
+        type: number
+        title: Rentabilidade
+
+      - name: percentualDesconto
+        sql: percentualdesconto
+        type: number
+        title: Percentual de Desconto
+
+      - name: acrescimo
+        sql: acrescimo
+        type: number
+        title: Acréscimo
+
+      - name: lucroLiquido
+        sql: lucroliquido
+        type: number
+        title: Lucro Líquido
+
+      - name: valorBaseVpc
+        sql: valorbasevpc
+        type: number
+        title: Valor Base VPC
+
+      - name: valorVpc
+        sql: valorvpc
+        type: number
+        title: Valor VPC
+
+      - name: prazoMedioRecebimento
+        sql: prazomediorecebimento
+        type: number
+        title: Prazo Médio de Recebimento
+
+      - name: valorCreditoUtilizado
+        sql: valorcreditoutilizado
+        type: number
+        title: Crédito Utilizado
+
+      - name: percentualVpc
+        sql: percentualvpc
+        type: number
+        title: Percentual VPC
+
+      - name: percentualMargemContribuicao
+        sql: percentualmargemcontribuicao
+        type: number
+        title: Percentual Margem Contribuição
+
+      - name: fatorAprovacao
+        sql: fatoraprovacao
+        type: number
+        title: Fator de Aprovação
+
+      - name: totalAdiantamentoCondicionado
+        sql: totaladiantamentocondicionado
+        type: number
+        title: Total Adiantamento Condicionado
+
+      - name: cambio
+        sql: cambio
+        type: number
+        title: Câmbio
+
+      - name: volume
+        sql: volume
+        type: number
+        title: Volume
+
+      - name: metragemCubica
+        sql: metragemcubica
+        type: number
+        title: Metragem Cúbica
+
+      - name: metragemCubicaTotal
+        sql: metragemcubicatotal
+        type: number
+        title: Metragem Cúbica Total
+
+      - name: pesoBrutoTotal
+        sql: pesobrutototal
+        type: number
+        title: Peso Bruto Total
+
+      - name: pesoLiquidoTotal
+        sql: pesoliquidototal
+        type: number
+        title: Peso Líquido Total
+
+      - name: volumeTotal
+        sql: volumetotal
+        type: number
+        title: Volume Total
+
+      - name: status
+        sql: status
+        type: number
+        title: Status
+
+      - name: statusDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.status = 0 THEN 'Aberto'
+            WHEN {CUBE}.status = 1 THEN 'Aguardando Liberação'
+            WHEN {CUBE}.status = 2 THEN 'Reprovado'
+            WHEN {CUBE}.status = 3 THEN 'Aprovado'
+            WHEN {CUBE}.status = 4 THEN 'Fechado'
+            WHEN {CUBE}.status = 5 THEN 'Programar Entrega'
+            WHEN {CUBE}.status = 6 THEN 'Inativo'
+            WHEN {CUBE}.status = 7 THEN 'Aguardando Sincronização'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Status Descrição
+
+      - name: motivoStatus
+        sql: motivostatus
+        type: number
+        title: Motivo Status
+
+      - name: motivoStatusDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.motivostatus IS NULL THEN 'Sem Motivo'
+            WHEN {CUBE}.motivostatus = 0 THEN 'Inadimplente'
+            WHEN {CUBE}.motivostatus = 1 THEN 'Crédito Insuficiente'
+            WHEN {CUBE}.motivostatus = 2 THEN 'Saldo Insuficiente'
+            WHEN {CUBE}.motivostatus = 3 THEN 'Aguardando Aprovação'
+            WHEN {CUBE}.motivostatus = 4 THEN 'Aguardando Geração Pedido'
+            WHEN {CUBE}.motivostatus = 5 THEN 'Aguardando Liberação ERP'
+            WHEN {CUBE}.motivostatus = 6 THEN 'Aprovado'
+            WHEN {CUBE}.motivostatus = 7 THEN 'Aguardando Liberação Financeira'
+            WHEN {CUBE}.motivostatus = 8 THEN 'Gateway Timeout ao Gerar Pedido'
+            WHEN {CUBE}.motivostatus = 9 THEN 'Aguardando Aprovação Desconto'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Motivo Status Descrição
+
+      - name: origem
+        sql: origem
+        type: number
+        title: Origem
+
+      - name: origemDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.origem = 0 THEN 'Proposta Comercial'
+            WHEN {CUBE}.origem = 1 THEN 'Orçamento Vendas'
+            WHEN {CUBE}.origem = 2 THEN 'Oportunidade'
+            WHEN {CUBE}.origem = 3 THEN 'Mobile'
+            WHEN {CUBE}.origem = 4 THEN 'Importação'
+            WHEN {CUBE}.origem = 5 THEN 'Intercompany'
+            WHEN {CUBE}.origem = 6 THEN 'Análise Compras'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Origem Descrição
+
+      - name: moeda
+        sql: moeda
+        type: string
+        title: Moeda
+
+      - name: email
+        sql: email
+        type: string
+        title: Email
+
+      - name: contatoSolicitante
+        sql: contatosolicitante
+        type: string
+        title: Contato Solicitante
+
+      - name: telefoneSolicitante
+        sql: telefonesolicitante
+        type: string
+        title: Telefone Solicitante
+
+      - name: motivoReprovacao
+        sql: motivoreprovacao
+        type: string
+        title: Motivo Reprovação
+
+      - name: parcelamentoManual
+        sql: parcelamentomanual
+        type: boolean
+        title: Parcelamento Manual
+
+      - name: permiteValorMenorQueListaPreco
+        sql: permitevalormenorquelistapreco
+        type: boolean
+        title: Permite Valor Menor que Lista
+
+      - name: programarEntrega
+        sql: programarentrega
+        type: boolean
+        title: Programar Entrega
+
+      - name: parcelamentoManualAdiantamento
+        sql: parcelamentomanualadiantamento
+        type: boolean
+        title: Parcelamento Manual Adiantamento
+
+      - name: parcelamentoManualAdiantamentoCondicionado
+        sql: parcelamentomanualadiantamentocondicionado
+        type: boolean
+        title: Parcelamento Manual Adiantamento Condicionado
+
+      - name: revisaoAtiva
+        sql: revisaoativa
+        type: boolean
+        title: Revisão Ativa
+
+      - name: clienteDescontaPisCofins
+        sql: clientedescontapiscofins
+        type: boolean
+        title: Cliente Desconta Pis Cofins
+
+      - name: destinadoUsoConsumoImobilizado
+        sql: destinadousoconsumoimobilizado
+        type: boolean
+        title: Destinado Uso Consumo Imobilizado
+
+      - name: intercompany
+        sql: intercompany
+        type: boolean
+        title: Intercompany
+
+      - name: intercompanyManual
+        sql: intercompanymanual
+        type: boolean
+        title: Intercompany Manual

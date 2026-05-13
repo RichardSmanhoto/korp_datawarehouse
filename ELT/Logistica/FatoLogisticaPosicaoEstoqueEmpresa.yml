@@ -1,0 +1,104 @@
+cubes:
+  - name: FatoLogisticaPosicaoEstoqueEmpresa
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_FatoLogisticaPosicaoEstoqueEmpresa`"
+    title: Logística Posição Estoque Empresa
+    
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: LogisticaProdutoLote
+        relationship: belongsTo
+        sql: "{CUBE}.IdLote = {LogisticaProdutoLote}.Id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.IdProduto = {LogisticaProduto}.Id"
+
+      - name: LogisticaProdutoLocal
+        relationship: belongsTo
+        sql: "{CUBE}.IdLocal = {LogisticaProdutoLocal}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.IdEmpresa = {PreCadastrosEmpresa}.Id"
+
+      - name: DataPosicao
+        relationship: belongsTo
+        sql: "{CUBE}.IdDataPosicao = {DataPosicao}.Id"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: saldoSum
+        sql: Saldo
+        type: sum
+        title: Soma do Saldo
+
+      - name: custoMedioSum
+        sql: CustoMedio
+        type: sum
+        title: Soma do Custo Médio
+
+      - name: custoUnitarioSum
+        sql: CustoUnitario
+        type: sum
+        title: Soma do Custo Unitário
+
+      - name: custoTotalSum
+        sql: CustoTotal
+        type: sum
+        title: Soma do Custo Total
+
+    dimensions:
+      - name: id
+        sql: Id
+        type: string
+        primary_key: true
+        title: Id
+
+      - name: idLote
+        sql: IdLote
+        type: number
+        title: Lote
+
+      - name: idProduto
+        sql: IdProduto
+        type: number
+        title: Produto
+
+      - name: idLocal
+        sql: IdLocal
+        type: number
+        title: Local
+
+      - name: idEmpresa
+        sql: IdEmpresa
+        type: number
+        title: Empresa
+
+      - name: idDataPosicao
+        sql: IdDataPosicao
+        type: number
+        title: Data
+
+      - name: saldo
+        sql: Saldo
+        type: number
+        title: Saldo
+
+      - name: custoMedio
+        sql: CustoMedio
+        type: number
+        title: Custo Médio
+
+      - name: custoUnitario
+        sql: CustoUnitario
+        type: number
+        title: Custo Unitário
+
+      - name: custoTotal
+        sql: CustoTotal
+        type: number
+        title: Custo Total

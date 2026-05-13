@@ -1,0 +1,92 @@
+cubes:
+  - name: FatoVendaPropostaParcelaFinanceira
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_parcela`"
+    title: Venda Proposta Comercial - Parcela Financeira
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FatoVendaPropostaCabecalho
+        relationship: belongsTo
+        sql: "{CUBE}.propostaid = {FatoVendaPropostaCabecalho}.id"
+
+      - name: FinanceiroTipoPagamento
+        relationship: belongsTo
+        sql: "{CUBE}.tipopagamentoid = {FinanceiroTipoPagamento}.GuidId"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: valorSum
+        sql: valor
+        type: sum
+        title: Soma do Valor
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idProposta
+        sql: propostaid
+        type: string
+        title: Proposta
+
+      - name: idTipoPagamento
+        sql: tipopagamentoid
+        type: string
+        title: Tipo de Pagamento
+
+      - name: vencimento
+        sql: vencimento
+        type: time
+        title: Vencimento
+
+      - name: valor
+        sql: valor
+        type: number
+        title: Valor
+
+      - name: numeroDias
+        sql: numerodias
+        type: number
+        title: Número de Dias
+
+      - name: percentual
+        sql: percentual
+        type: number
+        title: Percentual
+
+      - name: atualizacaoManual
+        sql: atualizacaomanual
+        type: boolean
+        title: Atualização Manual
+
+      - name: descricaoEvento
+        sql: descricaoevento
+        type: string
+        title: Descrição Evento
+
+      - name: tipo
+        sql: tipo
+        type: number
+        title: Tipo
+
+      - name: tipoDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.tipo = 0 THEN 'Normal'
+            WHEN {CUBE}.tipo = 1 THEN 'Adiantamento'
+            WHEN {CUBE}.tipo = 2 THEN 'Adiantamento Condicionado Evento'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Tipo Descrição
+
+      - name: nsu
+        sql: nsu
+        type: string
+        title: NSU
