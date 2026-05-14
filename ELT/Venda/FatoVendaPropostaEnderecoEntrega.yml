@@ -1,0 +1,112 @@
+cubes:
+  - name: FatoVendaPropostaEnderecoEntrega
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_endereco`"
+    title: Venda Proposta Comercial - Endereço
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FatoVendaPropostaCabecalho
+        relationship: belongsTo
+        sql: "{CUBE}.propostaid = {FatoVendaPropostaCabecalho}.id"
+
+    measures:
+      - name: count
+        type: count
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idProposta
+        sql: propostaid
+        type: string
+        title: Proposta
+
+      - name: tipo
+        sql: tipo
+        type: number
+        title: Tipo
+
+      - name: tipoDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.tipo = 0 THEN 'Entrega'
+            WHEN {CUBE}.tipo = 1 THEN 'Retirada'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Tipo Descrição
+
+      - name: cep
+        sql: cep
+        type: string
+        title: CEP
+
+      - name: rua
+        sql: rua
+        type: string
+        title: Rua
+
+      - name: numero
+        sql: numero
+        type: string
+        title: Número
+
+      - name: complemento
+        sql: complemento
+        type: string
+        title: Complemento
+
+      - name: bairro
+        sql: bairro
+        type: string
+        title: Bairro
+
+      - name: cidade
+        sql: cidade
+        type: string
+        title: Cidade
+
+      - name: ibgeCidade
+        sql: ibgecidade
+        type: string
+        title: IBGE Cidade
+
+      - name: estadoSigla
+        sql: estadosigla
+        type: string
+        title: Estado
+
+      - name: paisCodigo
+        sql: paiscodigo
+        type: string
+        title: País
+
+      - name: email
+        sql: email
+        type: string
+        title: Email
+
+      - name: cnpjCpf
+        sql: cnpjcpf
+        type: string
+        title: CNPJ/CPF
+
+      - name: inscricaoEstadual
+        sql: inscricaoestadual
+        type: string
+        title: Inscrição Estadual
+
+      - name: telefone
+        sql: telefone
+        type: string
+        title: Telefone
+
+      - name: razaoSocial
+        sql: razaosocial
+        type: string
+        title: Razão Social

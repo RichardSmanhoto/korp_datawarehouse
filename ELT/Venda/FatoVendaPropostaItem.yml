@@ -1,0 +1,506 @@
+cubes:
+  - name: FatoVendaPropostaItem
+    sql_table: "`viasoft_elt_{COMPILE_CONTEXT.securityContext.databaseName}`.`{COMPILE_CONTEXT.securityContext.schema}_itemproposta`"
+    title: Venda Proposta Comercial - Item
+
+    meta:
+      - versao: "__COMMIT_SHA__"
+
+    joins:
+      - name: FatoVendaPropostaCabecalho
+        relationship: belongsTo
+        sql: "{CUBE}.propostaid = {FatoVendaPropostaCabecalho}.id"
+
+      - name: LogisticaProduto
+        relationship: belongsTo
+        sql: "{CUBE}.produto_id = {LogisticaProduto}.GuidId"
+
+      - name: PreCadastrosUsuarioSistema
+        relationship: belongsTo
+        sql: "{CUBE}.idaprovadordesconto = {PreCadastrosUsuarioSistema}.Id"
+
+      - name: PreCadastrosEmpresa
+        relationship: belongsTo
+        sql: "{CUBE}.idempresa = {PreCadastrosEmpresa}.GuidId"
+
+    measures:
+      - name: count
+        type: count
+
+      - name: quantidadeSum
+        sql: quantidade
+        type: sum
+        title: Soma da Quantidade
+
+      - name: valorUnitarioSum
+        sql: valorunitario
+        type: sum
+        title: Soma do Valor Unitário
+
+      - name: valorTotalProdutosSum
+        sql: valortotalprodutos
+        type: sum
+        title: Soma do Valor Total Produtos
+
+      - name: valorTotalVendaSum
+        sql: valortotalvenda
+        type: sum
+        title: Soma do Valor Total Venda
+
+      - name: totalDescontoSum
+        sql: totaldesconto
+        type: sum
+        title: Soma do Desconto
+
+      - name: totalImpostosSum
+        sql: totalimpostos
+        type: sum
+        title: Soma dos Impostos
+
+      - name: valorFreteSum
+        sql: valorfrete
+        type: sum
+        title: Soma do Frete
+
+    dimensions:
+      - name: id
+        sql: id
+        type: string
+        primary_key: true
+
+      - name: idProposta
+        sql: propostaid
+        type: string
+        title: Proposta
+
+      - name: idProduto
+        sql: produto_id
+        type: string
+        title: Produto
+
+      - name: idAprovadorDesconto
+        sql: idaprovadordesconto
+        type: string
+        title: Aprovador de Desconto
+
+      - name: idEmpresa
+        sql: idempresa
+        type: string
+        title: Empresa
+
+      - name: produtoCodigo
+        sql: produto_codigo
+        type: string
+        title: Código do Produto
+
+      - name: unidadePadrao
+        sql: unidadepadrao
+        type: string
+        title: Unidade Padrão
+
+      - name: ordem
+        sql: ordem
+        type: string
+        title: Ordem
+
+      - name: revisaoProduto
+        sql: revisaoproduto
+        type: string
+        title: Revisão Produto
+
+      - name: numeroItem
+        sql: numeroitem
+        type: number
+        title: Número do Item
+
+      - name: motivoNaoAprovar
+        sql: motivonaoaprovar
+        type: string
+        title: Motivo Não Aprovar
+
+      - name: numeroRevisaoEngenharia
+        sql: numerorevisaoengenharia
+        type: string
+        title: Revisão Engenharia
+
+      - name: tipo
+        sql: tipo
+        type: number
+        title: Tipo
+
+      - name: tipoDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.tipo = 0 THEN 'Normal'
+            WHEN {CUBE}.tipo = 1 THEN 'Kit'
+            WHEN {CUBE}.tipo = 2 THEN 'Componente'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Tipo Descrição
+
+      - name: numero
+        sql: numero
+        type: number
+        title: Número
+
+      - name: descricaoProduto
+        sql: descricaoproduto
+        type: string
+        title: Descrição Produto
+
+      - name: codigoCliente
+        sql: codigocliente
+        type: string
+        title: Código do Cliente
+
+      - name: categoriaItem
+        sql: categoriaitem
+        type: number
+        title: Categoria do Item
+
+      - name: categoriaItemDescricao
+        sql: |
+          CASE
+            WHEN {CUBE}.categoriaitem = 10 THEN 'Matéria Prima'
+            WHEN {CUBE}.categoriaitem = 25 THEN 'Itens Prod. Importação Direta'
+            WHEN {CUBE}.categoriaitem = 30 THEN 'Serviço'
+            WHEN {CUBE}.categoriaitem = 40 THEN 'Terceiros'
+            WHEN {CUBE}.categoriaitem = 45 THEN 'Itens Improdutivos'
+            WHEN {CUBE}.categoriaitem = 50 THEN 'Itens Consignados'
+            WHEN {CUBE}.categoriaitem = 77 THEN 'Itens Produtivos Kanban'
+            WHEN {CUBE}.categoriaitem = 80 THEN 'Ferramentas'
+            WHEN {CUBE}.categoriaitem = 99 THEN 'Produto Acabado'
+            WHEN {CUBE}.categoriaitem = 100 THEN 'Kit de Venda'
+            WHEN {CUBE}.categoriaitem = 110 THEN 'Itens de Embalagem'
+            WHEN {CUBE}.categoriaitem = 200 THEN 'Revenda'
+            WHEN {CUBE}.categoriaitem = 300 THEN 'Kit'
+            ELSE 'Não Mapeado'
+          END
+        type: string
+        title: Categoria do Item Descrição
+
+      - name: complemento
+        sql: complemento
+        type: string
+        title: Complemento
+
+      - name: dataEntrega
+        sql: dataentrega
+        type: time
+        title: Data de Entrega
+
+      - name: leadTime
+        sql: leadtime
+        type: number
+        title: Lead Time
+
+      - name: prazoValidade
+        sql: prazovalidade
+        type: number
+        title: Prazo de Validade
+
+      - name: produtoVolume
+        sql: produto_volume
+        type: number
+        title: Volume do Produto
+
+      - name: produtoMetragemCubica
+        sql: produto_metragemcubica
+        type: number
+        title: Metragem Cúbica do Produto
+
+      - name: quantidade
+        sql: quantidade
+        type: number
+        title: Quantidade
+
+      - name: valorUnitario
+        sql: valorunitario
+        type: number
+        title: Valor Unitário
+
+      - name: valorBase
+        sql: valorbase
+        type: number
+        title: Valor Base
+
+      - name: valorTotalProdutos
+        sql: valortotalprodutos
+        type: number
+        title: Valor Total Produtos
+
+      - name: valorTotalVenda
+        sql: valortotalvenda
+        type: number
+        title: Valor Total Venda
+
+      - name: valorRecorrente
+        sql: valorrecorrente
+        type: number
+        title: Valor Recorrente
+
+      - name: quantidadeConversao
+        sql: quantidadeconversao
+        type: number
+        title: Quantidade Conversão
+
+      - name: valorConversao
+        sql: valorconversao
+        type: number
+        title: Valor Conversão
+
+      - name: descontoUnitario
+        sql: descontounitario
+        type: number
+        title: Desconto Unitário
+
+      - name: totalDesconto
+        sql: totaldesconto
+        type: number
+        title: Total Desconto
+
+      - name: totalImpostos
+        sql: totalimpostos
+        type: number
+        title: Total Impostos
+
+      - name: lucratividade
+        sql: lucratividade
+        type: number
+        title: Lucratividade
+
+      - name: rentabilidade
+        sql: rentabilidade
+        type: number
+        title: Rentabilidade
+
+      - name: percentualDesconto
+        sql: percentualdesconto
+        type: number
+        title: Percentual de Desconto
+
+      - name: valorBaseVpc
+        sql: valorbasevpc
+        type: number
+        title: Valor Base VPC
+
+      - name: valorVpc
+        sql: valorvpc
+        type: number
+        title: Valor VPC
+
+      - name: valorLucroLiquido
+        sql: valorlucroliquido
+        type: number
+        title: Valor Lucro Líquido
+
+      - name: valorPrecoEquilibrio
+        sql: valorprecoequilibrio
+        type: number
+        title: Preço de Equilíbrio
+
+      - name: acrescimo
+        sql: acrescimo
+        type: number
+        title: Acréscimo
+
+      - name: totalAcrescimo
+        sql: totalacrescimo
+        type: number
+        title: Total Acréscimo
+
+      - name: percentualAcrescimo
+        sql: percentualacrescimo
+        type: number
+        title: Percentual Acréscimo
+
+      - name: comissaoPercentualMaximo
+        sql: comissaopercentualmaximo
+        type: number
+        title: Comissão Percentual Máximo
+
+      - name: comissaoPercentualBase
+        sql: comissaopercentualbase
+        type: number
+        title: Comissão Percentual Base
+
+      - name: comissaoPercentual
+        sql: comissaopercentual
+        type: number
+        title: Comissão Percentual
+
+      - name: comissaoPercentualMarkup
+        sql: comissaopercentualmarkup
+        type: number
+        title: Comissão Percentual Markup
+
+      - name: comissaoValor
+        sql: comissaovalor
+        type: number
+        title: Comissão Valor
+
+      - name: comissaoBaseValor
+        sql: comissaobasevalor
+        type: number
+        title: Comissão Base Valor
+
+      - name: valorFrete
+        sql: valorfrete
+        type: number
+        title: Frete
+
+      - name: valorCustoComAcrescimo
+        sql: valorcustocomacrescimo
+        type: number
+        title: Custo com Acréscimo
+
+      - name: custoFabricacao
+        sql: custofabricacao
+        type: number
+        title: Custo de Fabricação
+
+      - name: percentualMarkupSemLucro
+        sql: percentualmarkupsemlucro
+        type: number
+        title: Markup sem Lucro
+
+      - name: percentualMarkup
+        sql: percentualmarkup
+        type: number
+        title: Percentual Markup
+
+      - name: percentualMargemContribuicao
+        sql: percentualmargemcontribuicao
+        type: number
+        title: Percentual Margem Contribuição
+
+      - name: fatorAprovacao
+        sql: fatoraprovacao
+        type: number
+        title: Fator de Aprovação
+
+      - name: metragemCubicaTotal
+        sql: metragemcubicatotal
+        type: number
+        title: Metragem Cúbica Total
+
+      - name: pesoBrutoTotal
+        sql: pesobrutototal
+        type: number
+        title: Peso Bruto Total
+
+      - name: pesoLiquidoTotal
+        sql: pesoliquidototal
+        type: number
+        title: Peso Líquido Total
+
+      - name: volumeTotal
+        sql: volumetotal
+        type: number
+        title: Volume Total
+
+      - name: valorDescontoMoedaEstrangeira
+        sql: valordescontomoedaestrangeira
+        type: number
+        title: Desconto em Moeda Estrangeira
+
+      - name: valorTotalMoedaEstrangeira
+        sql: valortotalmoedaestrangeira
+        type: number
+        title: Valor Total em Moeda Estrangeira
+
+      - name: valorUnitarioMoedaEstrangeira
+        sql: valorunitariomoedaestrangeira
+        type: number
+        title: Valor Unitário em Moeda Estrangeira
+
+      - name: custoExtraOrcamentoUnitario
+        sql: custoextraorcamentounitario
+        type: number
+        title: Custo Extra Orçamento Unitário
+
+      - name: custoUnitarioListaPreco
+        sql: custounitariolistapreco
+        type: number
+        title: Custo Unitário Lista Preço
+
+      - name: custoUnitarioOrcamento
+        sql: custounitarioorcamento
+        type: number
+        title: Custo Unitário Orçamento
+
+      - name: custoMedioUnitarioProduto
+        sql: customediounitarioproduto
+        type: number
+        title: Custo Médio Unitário Produto
+
+      - name: custoUnitarioProduto
+        sql: custounitarioproduto
+        type: number
+        title: Custo Unitário Produto
+
+      - name: quantidadeEmpenho
+        sql: quantidadeempenho
+        type: number
+        title: Quantidade Empenho
+
+      - name: quantidadeRestanteEmpenhar
+        sql: quantidaderestanteempenhar
+        type: number
+        title: Quantidade Restante Empenhar
+
+      - name: percentualDescontoAprovado
+        sql: percentualdescontoaprovado
+        type: number
+        title: Percentual Desconto Aprovado
+
+      - name: naoAprovar
+        sql: naoaprovar
+        type: boolean
+        title: Não Aprovar
+
+      - name: possuiIcmsSt
+        sql: possuiicmsst
+        type: boolean
+        title: Possui ICMS-ST
+
+      - name: bonificacao
+        sql: bonificacao
+        type: boolean
+        title: Bonificação
+
+      - name: aplicarNaturezaOperacao
+        sql: aplicarnaturezaoperacao
+        type: boolean
+        title: Aplicar Natureza Operação
+
+      - name: cancelado
+        sql: cancelado
+        type: boolean
+        title: Cancelado
+
+      - name: gerarOdfKit
+        sql: gerarodfkit
+        type: boolean
+        title: Gerar ODF Kit
+
+      - name: entregaFutura
+        sql: entregafutura
+        type: boolean
+        title: Entrega Futura
+
+      - name: componenteManual
+        sql: componentemanual
+        type: boolean
+        title: Componente Manual
+
+      - name: permiteEntregaAntecipada
+        sql: permiteentregaantecipada
+        type: boolean
+        title: Permite Entrega Antecipada
+
+      - name: aguardandoAprovacaoDesconto
+        sql: aguardandoaprovacaodesconto
+        type: boolean
+        title: Aguardando Aprovação Desconto
